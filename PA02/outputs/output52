@@ -1,0 +1,17 @@
+
+   Usage: pa02 <command> <inputfile>
+
+      <command> should be one of:
+
+         my_strlen
+         my_countchar
+         my_strupper
+         my_strlower
+         my_strcpy
+         my_strncpy
+         my_strcat
+         my_strncat
+         my_strstr
+         my_strinsert
+         my_strdelete
+

@@ -1,0 +1,65 @@
+==877== Memcheck, a memory error detector
+==877== Copyright (C) 2002-2012, and GNU GPL'd, by Julian Seward et al.
+==877== Using Valgrind-3.8.1 and LibVEX; rerun with -h for copyright info
+==877== Command: ./pa02 inputs/input7
+==877== Parent PID: 868
+==877== 
+--877-- 
+--877-- Valgrind options:
+--877--    --tool=memcheck
+--877--    --leak-check=full
+--877--    --verbose
+--877--    --log-file=outputs/valgrind-log27
+--877-- Contents of /proc/version:
+--877--   Linux version 2.6.32-358.14.1.el6.x86_64 (mockbuild@x86-022.build.eng.bos.redhat.com) (gcc version 4.4.7 20120313 (Red Hat 4.4.7-3) (GCC) ) #1 SMP Mon Jun 17 15:54:20 EDT 2013
+--877-- Arch and hwcaps: AMD64, amd64-sse3-cx16
+--877-- Page sizes: currently 4096, max supported 4096
+--877-- Valgrind library directory: /usr/lib64/valgrind
+--877-- Reading syms from /home/shay/a/dawood0/Personal/ECE264/solutions/ECE264/PA02/pa02
+--877-- Reading syms from /usr/lib64/valgrind/memcheck-amd64-linux
+--877--    object doesn't have a dynamic symbol table
+--877-- Reading syms from /lib64/ld-2.12.so
+--877-- Scheduler: using generic scheduler lock implementation.
+--877-- Reading suppressions file: /usr/lib64/valgrind/default.supp
+==877== embedded gdbserver: reading from /tmp/vgdb-pipe-from-vgdb-to-877-by-dawood0-on-ecelinux13.ecn.purdue.edu
+==877== embedded gdbserver: writing to   /tmp/vgdb-pipe-to-vgdb-from-877-by-dawood0-on-ecelinux13.ecn.purdue.edu
+==877== embedded gdbserver: shared mem   /tmp/vgdb-pipe-shared-mem-vgdb-877-by-dawood0-on-ecelinux13.ecn.purdue.edu
+==877== 
+==877== TO CONTROL THIS PROCESS USING vgdb (which you probably
+==877== don't want to do, unless you know exactly what you're doing,
+==877== or are doing some strange experiment):
+==877==   /usr/lib64/valgrind/../../bin/vgdb --pid=877 ...command...
+==877== 
+==877== TO DEBUG THIS PROCESS USING GDB: start GDB like this
+==877==   /path/to/gdb ./pa02
+==877== and then give GDB the following command
+==877==   target remote | /usr/lib64/valgrind/../../bin/vgdb --pid=877
+==877== --pid is optional if only one valgrind process is running
+==877== 
+--877-- REDIR: 0x3eb5217520 (strlen) redirected to 0x38049551 (vgPlain_amd64_linux_REDIR_FOR_strlen)
+--877-- Reading syms from /usr/lib64/valgrind/vgpreload_core-amd64-linux.so
+--877-- Reading syms from /usr/lib64/valgrind/vgpreload_memcheck-amd64-linux.so
+--877-- REDIR: 0x3eb5217390 (index) redirected to 0x4a07bf0 (index)
+--877-- REDIR: 0x3eb5217410 (strcmp) redirected to 0x4a08530 (strcmp)
+--877-- Reading syms from /lib64/libc-2.12.so
+--877-- REDIR: 0x3eb5684ec0 (strcasecmp) redirected to 0x480155c (_vgnU_ifunc_wrapper)
+--877-- REDIR: 0x3eb5687180 (strncasecmp) redirected to 0x480155c (_vgnU_ifunc_wrapper)
+--877-- REDIR: 0x3eb5682e30 (__GI_strrchr) redirected to 0x4a07a70 (__GI_strrchr)
+--877-- REDIR: 0x3eb567f8d0 (strcmp) redirected to 0x480155c (_vgnU_ifunc_wrapper)
+--877-- REDIR: 0x3eb5727ac0 (__strcmp_sse42) redirected to 0x4a08490 (strcmp)
+--877-- REDIR: 0x3eb568ace0 (strchrnul) redirected to 0x4a09f10 (strchrnul)
+--877-- REDIR: 0x3eb56846f0 (mempcpy) redirected to 0x4a09f80 (mempcpy)
+--877-- REDIR: 0x3eb567b710 (free) redirected to 0x4a06369 (free)
+==877== 
+==877== HEAP SUMMARY:
+==877==     in use at exit: 0 bytes in 0 blocks
+==877==   total heap usage: 0 allocs, 0 frees, 0 bytes allocated
+==877== 
+==877== All heap blocks were freed -- no leaks are possible
+==877== 
+==877== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 6 from 6)
+--877-- 
+--877-- used_suppression:      4 U1004-ARM-_dl_relocate_object
+--877-- used_suppression:      2 glibc-2.5.x-on-SUSE-10.2-(PPC)-2a
+==877== 
+==877== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 6 from 6)

@@ -1,0 +1,1 @@
+obj/answer02.o: answer02.c pa02.h \
