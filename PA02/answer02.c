@@ -187,6 +187,28 @@ void my_strncat(char * s1, const char * s2, int num)
 
 const char *my_strstr(const char * s1, const char * s2)
 {
+  int i = 0;
+  int j = 0;
+  int temp = 1;
+  while(s1[i] != '\0')
+    {
+      if(s1[i] == s2[0])
+	{
+	  while(s2[j] != '\0' && temp == 1)
+	    {
+	      if(s2[j] != s1[i+j])
+		{
+		  temp = 0;
+		}
+	      j++;
+	    }       
+	  if(temp == 1)
+	    {
+	      return (s1+i);
+	    }
+	}
+      i++;
+    }
     return NULL;
 }
 
@@ -220,7 +242,23 @@ const char *my_strstr(const char * s1, const char * s2)
  */
 void my_strinsert(char *s1, const char *s2, int pos)
 {
-  
+  int i = 0;
+  int j = 0;
+  int s1_length = my_strlen(s1);
+  int s2_length = my_strlen(s2);
+  i = s1_length;
+  while( i != (pos-1) )
+    {
+      s1[i+s2_length] = s1[i];
+      i--;
+    }
+  i = pos;
+  while(s2[i] != '\0')
+    {
+      s1[i] = s2[j];
+      i++;
+      j++;
+    }
 }
 
 /**
@@ -255,6 +293,12 @@ void my_strinsert(char *s1, const char *s2, int pos)
  */
 void my_strdelete(char *s, int pos, int length)
 {
-  
+  int i = pos;
+  while(s[i] != '\0')
+    {
+      s[i] = s[i+length];
+      i++;
+    }
+  s[i] = '\0';
 }
 
