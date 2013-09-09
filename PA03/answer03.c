@@ -3,7 +3,8 @@
 #include <stdlib.h>
 
 //Function Declarations
-void quicksort(int * arr, int pivot, int end);
+void quicksort(int * , int , int );
+int binsearch(int *, int , int , int );
 
 /**
  * Read a file of integers.
@@ -167,7 +168,7 @@ void quicksort(int * arr, int pivot, int end)
 	{
 	  quicksort(arr,0,pivot-1);
 	}
-      if(pivot+1 <= end)
+      if(pivot+1 < end)
 	{
 	  quicksort(arr,pivot+1,end);
 	}
@@ -176,7 +177,7 @@ void quicksort(int * arr, int pivot, int end)
 
 void sort(int * arr, int length)
 {
-  quicksort(arr,0,length-1);
+  quicksort(arr,0,length-1); //Seperate function used to use the index/pivot address. 
 } 
 
 /**
@@ -223,9 +224,35 @@ void sort(int * arr, int length)
  * }
  * return -1;
  */
+
+
+int binsearch(int *arr, int start, int end, int key)
+{
+  int pos = (end+start)/2 ;
+  
+  if(arr[pos] == key)
+    {
+      return pos;
+    }
+  else if(arr[pos] < key && end != start)
+    {
+      return binsearch(arr,pos,end,key);
+    }
+  else if(arr[pos] > key && end != start)
+    {
+      return binsearch(arr,0,pos,key);
+    }
+  else
+    {
+      return -1;
+    }
+}
+
 int search(int * arr, int length, int key)
 {
-    return -1;
+  int pos;
+  pos = binsearch(arr,0,length-1,key);
+  return pos;
 }
 
 
