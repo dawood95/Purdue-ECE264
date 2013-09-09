@@ -2,6 +2,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+//Function Declarations
+void quicksort(int * arr, int pivot, int end);
+
 /**
  * Read a file of integers.
  *
@@ -122,13 +125,62 @@ int * readIntegers(const char * filename, int * numberOfIntegers)
  * sort.
  *
  */
-void sort(int * arr, int length)
+
+void quicksort(int * arr, int pivot, int end)
 {
-    
+  int i = pivot+1;
+  int k;
+  int temp;
+  if(( (end - pivot) == 1) && (arr[i]<arr[pivot]) )
+    {
+      temp = arr[i];
+      arr[i] = arr[pivot];
+      arr[pivot] = temp;
+    }
+  else
+    {
+      while(arr[pivot] >= arr[i] && i <= end)
+	{
+	  temp = arr[i];
+	  arr[i] = arr[pivot];
+	  arr[pivot] = temp;
+	  pivot = i;
+	  i++;
+	}
+      while(i <= end)
+	{
+	  if(arr[i] < arr[pivot])
+	    {
+	      temp = arr[i];
+	      k = i;
+	      while( k != pivot)
+		{
+		  arr[k] = arr[k-1];
+		  k--;
+		}
+	      arr[k] = temp;
+	      pivot = k+1;
+	    }
+	  i++;
+	}
+      if(pivot-1 > 0)
+	{
+	  quicksort(arr,0,pivot-1);
+	}
+      if(pivot+1 <= end)
+	{
+	  quicksort(arr,pivot+1,end);
+	}
+    }
 }
 
+void sort(int * arr, int length)
+{
+  quicksort(arr,0,length-1);
+} 
+
 /**
- * Use binary search to find 'key' in a sorted array of integers
+ * use binary search to find 'key' in a sorted array of integers
  *
  * Arguments:
  * 
