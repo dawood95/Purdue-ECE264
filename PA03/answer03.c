@@ -140,7 +140,7 @@ void quicksort(int * arr, int pivot, int end)
     }
   else
     {
-      while(arr[pivot] >= arr[i] && i <= end)
+      while(i <= end && arr[pivot] >= arr[i])
 	{
 	  temp = arr[i];
 	  arr[i] = arr[pivot];
@@ -229,18 +229,18 @@ void sort(int * arr, int length)
 int binsearch(int *arr, int start, int end, int key)
 {
   int pos = (end+start)/2 ;
-  
+  pos--;
   if(arr[pos] == key)
     {
       return pos;
     }
-  else if(arr[pos] < key && end != start)
+  else if(arr[pos] > key && pos!=0)
     {
-      return binsearch(arr,pos,end,key);
+      return binsearch(arr,1,pos,key);
     }
-  else if(arr[pos] > key && end != start)
+  else if(arr[pos] < key && pos!=end-1)
     {
-      return binsearch(arr,0,pos,key);
+      return binsearch(arr,pos+2,end,key);
     }
   else
     {
@@ -250,8 +250,8 @@ int binsearch(int *arr, int start, int end, int key)
 
 int search(int * arr, int length, int key)
 {
-  int pos;
-  pos = binsearch(arr,0,length-1,key);
+  int pos = -1;
+  pos = binsearch(arr,1,length,key);
   return pos;
 }
 
