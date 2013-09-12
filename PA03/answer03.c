@@ -5,6 +5,7 @@
 //Function Declarations
 void quicksort(int * , int , int );
 int binsearch(int *, int , int , int );
+void swap(int *, int *);
 
 /**
  * Read a file of integers.
@@ -127,51 +128,47 @@ int * readIntegers(const char * filename, int * numberOfIntegers)
  *
  */
 
-void quicksort(int * arr, int pivot, int end)
+
+void swap(int *a, int *b)
 {
-  int i = pivot+1;
-  int k;
   int temp;
-  if(( (end - pivot) == 1) && (arr[i]<arr[pivot]) )
+  temp = *b;
+  *b = *a;
+  *a = temp;
+}
+
+void quicksort(int *arr,int pivot,int end)
+{
+  int left = pivot + 1;
+  int right = end;
+  while(right > left)
     {
-      temp = arr[i];
-      arr[i] = arr[pivot];
-      arr[pivot] = temp;
+      while(left < end && arr[left] < arr[pivot])
+	{
+	  left++;
+	}
+      while(right > pivot && arr[right] > arr[pivot])
+	{
+	  right--;
+	}
+      if(right > left)
+	{
+	  swap(&arr[right],&arr[left]);
+	  right--;
+	  left++;
+	}
     }
-  else
+  if(arr[right] < arr[pivot])
     {
-      while(i <= end && arr[pivot] >= arr[i])
-	{
-	  temp = arr[i];
-	  arr[i] = arr[pivot];
-	  arr[pivot] = temp;
-	  pivot = i;
-	  i++;
-	}
-      while(i <= end)
-	{
-	  if(arr[i] < arr[pivot])
-	    {
-	      temp = arr[i];
-	      k = i;
-	      while( k != pivot)
-		{
-		  arr[k] = arr[k-1];
-		  k--;
-		}
-	      arr[k] = temp;
-	      pivot = k+1;
-	    }
-	  i++;
-	}
-      if(pivot-1 > 0)
-	{
-	  quicksort(arr,0,pivot-1);
-	}
-      if(pivot+1 < end)
-	{
-	  quicksort(arr,pivot+1,end);
-	}
+      swap(&arr[right],&arr[pivot]);
+    }
+  if(right-1 > pivot)
+    {
+      quicksort(arr,pivot,right-1);
+    }
+  if(left < end)
+    {
+      quicksort(arr,left,end);
     }
 }
 
