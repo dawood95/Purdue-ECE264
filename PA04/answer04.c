@@ -16,7 +16,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-
+void displayArr(int * , int);
+void partitionHelper(int *, int, int, int);
+void partition(int *,int , int);
 
 /*
  * =================================================================
@@ -30,12 +32,50 @@
  * = 3
  */
 
+void displayArr(int *array, int end)
+{
+  int i = 0;
+  printf("= %d",array[i]);
+  for(i = 1; i<=end; i++)
+    {
+      printf(" + %d",array[i]);
+    }
+  printf("\n");
+}
+
+void partitionHelper(int *array, int value, int firstElement, int index)
+{
+  array[index] = firstElement;
+  if(firstElement == value)
+    {
+      displayArr(array,index);
+    }
+  else if(value-firstElement > 0)
+    {
+      partition(array,value-firstElement,index + 1); 
+    }
+  else
+    {
+      displayArr(array,0);
+    }
+}
+
+void partition(int *array,int value,int index)
+{
+  int firstElement;
+  for(firstElement = 1; firstElement <= value; firstElement++)
+    {
+      partitionHelper(array,value,firstElement,index);
+    }
+}
 
 void partitionAll(int value)
 {
-  printf("partitionAll %d\n", value);
-  
+  int array[MAXLENGTH];
+  printf("partitioanAll %d\n", value); 
+  partition(array,value,0);
 }
+
 /*
  * =================================================================
  * This function prints the partitions that use increasing values.
