@@ -19,11 +19,19 @@
 void displayArrAll(int * , int);
 void displayArrIncreasing(int *, int);
 void displayArrDeccreasing(int *, int);
+void displayArrOdd(int *, int);
+void displayArrEven(int *, int);
+void displayArrOddEven(int *, int);
+void displayArrPrime(int *, int);
 void partitionHelper(int *, int, int, int, int);
 void partition(int *,int , int, int);
 int isIncreasing(int *, int);
 int isDecreasing(int *, int);
-
+int isOdd(int *, int);
+int isEven(int *, int);
+int isOddEven(int *, int);
+int isPrime(int *, int);
+int prime(int);
 /*
  * =================================================================
  * This function prints all partitions of a positive integer value
@@ -75,6 +83,135 @@ void displayArrDecreasing(int *array, int end)
     }
 }
 
+void displayArrOdd(int *array, int end)
+{
+  if(isOdd(array,end) == 1)
+    {
+      int i = 0;
+      printf("= %d",array[i]);
+      for(i = 1; i<=end; i++)
+	{
+	  printf(" + %d",array[i]);
+	}
+      printf("\n");
+    }
+}
+
+void displayArrEven(int *array, int end)
+{
+  if(isEven(array,end) == 1)
+    {
+      int i = 0;
+      printf("= %d",array[i]);
+      for(i = 1; i<=end; i++)
+	{
+	  printf(" + %d",array[i]);
+	}
+      printf("\n");
+    }
+}
+
+void displayArrOddEven(int *array, int end)
+{
+  if(isOddEven(array,end) == 1)
+    {
+      int i = 0;
+      printf("= %d",array[i]);
+      for(i = 1; i<=end; i++)
+	{
+	  printf(" + %d",array[i]);
+	}
+      printf("\n");
+    }
+}
+
+void displayArrPrime(int *array, int end)
+{
+  if(isPrime(array,end) == 1)
+    {
+    int i = 0;
+    printf("= %d",array[i]);
+    for(i = 1; i<=end; i++)
+      {
+	printf(" + %d",array[i]);
+      }
+    printf("\n");
+    }
+}
+
+int isPrime(int *array, int end)
+{
+  int i = 0;
+  for(i = 0; i <= end; i++)
+    {
+      if(prime(array[i]) == 0)
+	{
+	  return 0;
+	}
+    }
+  return 1;
+}
+
+int prime(int number)
+{
+  int i = 1;
+  int count = 0;
+  for(i = 1; i <= number; i++)
+    {
+      if(number % i == 0)
+	{
+	  count++;
+	}
+    }
+  if(count == 2)
+    {
+      return 1;
+    }
+  else
+    {
+      return 0;
+    }
+}
+
+int isOddEven(int *array, int end)
+{
+  int i = 0;
+  for(i = 0; i<=end;i++)
+    {
+      if(((i%2 == 0) && (array[i]%2 == 0)) || ((i%2 != 0) && (array[i]%2 != 0)) )
+	{
+	  return 0;
+	}
+    }
+  return 1;
+}
+
+int isOdd(int *array, int end)
+{
+  int i = 0;
+  for(i = 0; i <= end;i++)
+    {
+      if((array[i]%2) == 0)
+	{
+	  return 0;
+	}
+    }
+  return 1;
+}
+
+int isEven(int *array, int end)
+{
+  int i = 0;
+  for(i = 0; i<=end;i++)
+    {
+      if((array[i]%2) != 0)
+	{
+	  return 0;
+	}
+    }
+  return 1;
+}
+
 int isDecreasing(int *array, int end)
 {
   int i = 0;
@@ -86,7 +223,6 @@ int isDecreasing(int *array, int end)
 	}
     }
   return 1;
-
 }
 int isIncreasing(int *array, int end)
 {
@@ -117,16 +253,62 @@ void partitionHelper(int *array, int value, int firstElement, int index, int fun
 	case (3):
 	  displayArrDecreasing(array,index);
 	  break;
+	case (4):
+	  displayArrOdd(array,index);
+	  break;
+	case (5):
+	  displayArrEven(array,index);
+	  break;
+	case (6):
+	  displayArrOddEven(array,index);
+	  break;
+	case (7):
+	  displayArrPrime(array,index);
+	  break;
 	}
     }
   else if(value-firstElement > 0)
     {
       partition(array,value-firstElement,index + 1,functionNumber); 
     }
-  else
-    {
-      displayArrAll(array,0);
-    }
+  /* else */
+  /*   { */
+  /*     switch(functionNumber) */
+  /* 	{ */
+  /* 	case (1):  */
+  /* 	  displayArrAll(array,0); */
+  /* 	  break; */
+  /* 	case (2): */
+  /* 	  displayArrAll(array,0); */
+  /* 	  break; */
+  /* 	case (3): */
+  /* 	  displayArrAll(array,0); */
+  /* 	  break; */
+  /* 	case (4): */
+  /* 	  if(array[0]%2 != 0) */
+  /* 	    {  */
+  /* 	      displayArrAll(array,0); */
+  /* 	    } */
+  /* 	  break; */
+  /* 	case (5): */
+  /* 	  if(array[0]%2 == 0) */
+  /* 	    { */
+  /* 	      displayArrAll(array,0); */
+  /* 	    }		     */
+  /* 	  break; */
+  /* 	case (6): */
+  /* 	  displayArrAll(array,0); */
+  /* 	  break; */
+  /* 	case (7): */
+  /* 	  if(prime(array[0]) == 1) */
+  /* 	    { */
+  /* 	      displayArrAll(array,0); */
+  /* 	    } */
+  /* 	  break; */
+  /* 	} */
+
+  /*     //  displayArrAll(array,0); */
+  /*   } */
 }
 
 void partition(int *array,int value, int index, int functionNumber)
@@ -219,8 +401,9 @@ void partitionDecreasing(int value)
 
 void partitionOdd(int value)
 {
+  int array[MAXLENGTH];
   printf("partitionOdd %d\n", value);
-  
+  partition(array,value,0,4);
 }
 
 /*
@@ -244,8 +427,9 @@ void partitionOdd(int value)
 
 void partitionEven(int value)
 {
+  int array[MAXLENGTH];
   printf("partitionEven %d\n", value);
-
+  partition(array,value,0,5);
 }
 
 /*
@@ -269,8 +453,9 @@ void partitionEven(int value)
 
 void partitionOddAndEven(int value)
 {
+  int array[MAXLENGTH];
   printf("partitionOddAndEven %d\n", value);
-  
+  partition(array,value,0,6);  
 }
 
 /*
@@ -293,6 +478,7 @@ void partitionOddAndEven(int value)
 
 void partitionPrime(int value)
 {
+  int array[MAXLENGTH];
   printf("partitionPrime %d\n", value);
-
+  partition(array,value,0,7);
 }
