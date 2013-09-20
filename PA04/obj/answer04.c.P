@@ -1,0 +1,1 @@
+obj/answer04.o: answer04.c pa04.h \

@@ -16,9 +16,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void displayArr(int * , int);
-void partitionHelper(int *, int, int, int);
-void partition(int *,int , int);
+void displayArrAll(int * , int);
+void displayArrIncreasing(int *, int);
+void displayArrDeccreasing(int *, int);
+void partitionHelper(int *, int, int, int, int);
+void partition(int *,int , int, int);
+int isIncreasing(int *, int);
+int isDecreasing(int *, int);
 
 /*
  * =================================================================
@@ -32,7 +36,7 @@ void partition(int *,int , int);
  * = 3
  */
 
-void displayArr(int *array, int end)
+void displayArrAll(int *array, int end)
 {
   int i = 0;
   printf("= %d",array[i]);
@@ -43,37 +47,102 @@ void displayArr(int *array, int end)
   printf("\n");
 }
 
-void partitionHelper(int *array, int value, int firstElement, int index)
+void displayArrIncreasing(int *array, int end)
+{
+  if(isIncreasing(array,end) == 1)
+    {
+      int i = 0;
+      printf("= %d",array[i]);
+      for(i = 1; i<=end; i++)
+	{
+	  printf(" + %d",array[i]);
+	}
+      printf("\n");
+    }
+}
+
+void displayArrDecreasing(int *array, int end)
+{
+  if(isDecreasing(array,end) == 1)
+    {
+      int i = 0;
+      printf("= %d",array[i]);
+      for(i = 1; i<=end; i++)
+	{
+	  printf(" + %d",array[i]);
+	}
+      printf("\n");
+    }
+}
+
+int isDecreasing(int *array, int end)
+{
+  int i = 0;
+  for(i = 0; i<end;i++)
+    {
+      if(array[i] <= array[i+1])
+	{
+	  return 0;
+	}
+    }
+  return 1;
+
+}
+int isIncreasing(int *array, int end)
+{
+  int i = 0;
+  for(i = 0; i<end;i++)
+    {
+      if(array[i] >= array[i+1])
+	{
+	  return 0;
+	}
+    }
+  return 1;
+}
+
+void partitionHelper(int *array, int value, int firstElement, int index, int functionNumber)
 {
   array[index] = firstElement;
   if(firstElement == value)
     {
-      displayArr(array,index);
+      switch(functionNumber)
+	{
+	case (1): 
+	  displayArrAll(array,index);
+	  break;
+	case (2):
+	  displayArrIncreasing(array,index);
+	  break;
+	case (3):
+	  displayArrDecreasing(array,index);
+	  break;
+	}
     }
   else if(value-firstElement > 0)
     {
-      partition(array,value-firstElement,index + 1); 
+      partition(array,value-firstElement,index + 1,functionNumber); 
     }
   else
     {
-      displayArr(array,0);
+      displayArrAll(array,0);
     }
 }
 
-void partition(int *array,int value,int index)
+void partition(int *array,int value, int index, int functionNumber)
 {
   int firstElement;
   for(firstElement = 1; firstElement <= value; firstElement++)
     {
-      partitionHelper(array,value,firstElement,index);
+      partitionHelper(array,value,firstElement,index,functionNumber);
     }
 }
 
 void partitionAll(int value)
 {
   int array[MAXLENGTH];
-  printf("partitioanAll %d\n", value); 
-  partition(array,value,0);
+  printf("partitionAll %d\n", value); 
+  partition(array,value,0,1);
 }
 
 /*
@@ -98,8 +167,9 @@ void partitionAll(int value)
 
 void partitionIncreasing(int value)
 {
+  int array[MAXLENGTH];
   printf("partitionIncreasing %d\n", value);
-
+  partition(array,value,0,2);
 }
 
 /*
@@ -124,9 +194,9 @@ void partitionIncreasing(int value)
 
 void partitionDecreasing(int value)
 {
+  int array[MAXLENGTH];
   printf("partitionDecreasing %d\n", value);
-  
-
+  partition(array,value,0,3);
 }
 
 /*
