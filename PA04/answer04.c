@@ -16,6 +16,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+/********************Custom fucntions****************************/
+
 void displayArrAll(int * , int);
 void displayArrIncreasing(int *, int);
 void displayArrDeccreasing(int *, int);
@@ -32,17 +34,7 @@ int isEven(int *, int);
 int isOddEven(int *, int);
 int isPrime(int *, int);
 int prime(int);
-/*
- * =================================================================
- * This function prints all partitions of a positive integer value
- * For example, if the value is 3:
- *
- * partitionAll 3
- * = 1 + 1 + 1
- * = 1 + 2
- * = 2 + 1
- * = 3
- */
+
 
 void displayArrAll(int *array, int end)
 {
@@ -240,6 +232,7 @@ int isIncreasing(int *array, int end)
 void partitionHelper(int *array, int value, int firstElement, int index, int functionNumber)
 {
   array[index] = firstElement;
+  
   if(firstElement == value)
     {
       switch(functionNumber)
@@ -271,44 +264,7 @@ void partitionHelper(int *array, int value, int firstElement, int index, int fun
     {
       partition(array,value-firstElement,index + 1,functionNumber); 
     }
-  /* else */
-  /*   { */
-  /*     switch(functionNumber) */
-  /* 	{ */
-  /* 	case (1):  */
-  /* 	  displayArrAll(array,0); */
-  /* 	  break; */
-  /* 	case (2): */
-  /* 	  displayArrAll(array,0); */
-  /* 	  break; */
-  /* 	case (3): */
-  /* 	  displayArrAll(array,0); */
-  /* 	  break; */
-  /* 	case (4): */
-  /* 	  if(array[0]%2 != 0) */
-  /* 	    {  */
-  /* 	      displayArrAll(array,0); */
-  /* 	    } */
-  /* 	  break; */
-  /* 	case (5): */
-  /* 	  if(array[0]%2 == 0) */
-  /* 	    { */
-  /* 	      displayArrAll(array,0); */
-  /* 	    }		     */
-  /* 	  break; */
-  /* 	case (6): */
-  /* 	  displayArrAll(array,0); */
-  /* 	  break; */
-  /* 	case (7): */
-  /* 	  if(prime(array[0]) == 1) */
-  /* 	    { */
-  /* 	      displayArrAll(array,0); */
-  /* 	    } */
-  /* 	  break; */
-  /* 	} */
 
-  /*     //  displayArrAll(array,0); */
-  /*   } */
 }
 
 void partition(int *array,int value, int index, int functionNumber)
@@ -320,11 +276,24 @@ void partition(int *array,int value, int index, int functionNumber)
     }
 }
 
+/*
+ * =================================================================
+ * This function prints all partitions of a positive integer value
+ * For example, if the value is 3:
+ *
+ * partitionAll 3
+ * = 1 + 1 + 1
+ * = 1 + 2
+ * = 2 + 1
+ * = 3
+ */
+
 void partitionAll(int value)
 {
-  int array[MAXLENGTH];
+  int * array = malloc(value * sizeof(int));
   printf("partitionAll %d\n", value); 
   partition(array,value,0,1);
+  free(array);
 }
 
 /*
@@ -346,12 +315,12 @@ void partitionAll(int value)
  *
  */
 
-
 void partitionIncreasing(int value)
 {
-  int array[MAXLENGTH];
+  int * array = malloc(value * sizeof(int));
   printf("partitionIncreasing %d\n", value);
   partition(array,value,0,2);
+  free(array);
 }
 
 /*
@@ -373,12 +342,12 @@ void partitionIncreasing(int value)
  *
  */
 
-
 void partitionDecreasing(int value)
 {
-  int array[MAXLENGTH];
+  int * array = malloc(value * sizeof(int));
   printf("partitionDecreasing %d\n", value);
   partition(array,value,0,3);
+  free(array);
 }
 
 /*
@@ -398,12 +367,12 @@ void partitionDecreasing(int value)
  * generates invalid partitions and checks validity before printing.
  */
 
-
 void partitionOdd(int value)
 {
-  int array[MAXLENGTH];
+  int * array = malloc(value * sizeof(int));
   printf("partitionOdd %d\n", value);
   partition(array,value,0,4);
+  free(array);
 }
 
 /*
@@ -427,9 +396,10 @@ void partitionOdd(int value)
 
 void partitionEven(int value)
 {
-  int array[MAXLENGTH];
+  int * array = malloc(value * sizeof(int));
   printf("partitionEven %d\n", value);
   partition(array,value,0,5);
+  free(array);
 }
 
 /*
@@ -453,9 +423,10 @@ void partitionEven(int value)
 
 void partitionOddAndEven(int value)
 {
-  int array[MAXLENGTH];
+  int * array = malloc(value * sizeof(int));
   printf("partitionOddAndEven %d\n", value);
   partition(array,value,0,6);  
+  free(array);
 }
 
 /*
@@ -474,11 +445,10 @@ void partitionOddAndEven(int value)
  * generates invalid partitions and checks validity before printing.
  */
 
-
-
 void partitionPrime(int value)
 {
-  int array[MAXLENGTH];
+  int * array = malloc(value * sizeof(int));
   printf("partitionPrime %d\n", value);
   partition(array,value,0,7);
+  free(array);
 }
