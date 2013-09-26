@@ -1,73 +1,352 @@
-==484== Memcheck, a memory error detector
-==484== Copyright (C) 2002-2012, and GNU GPL'd, by Julian Seward et al.
-==484== Using Valgrind-3.8.1 and LibVEX; rerun with -h for copyright info
-==484== Command: ./pa05 s inputs/strinput0 outputs/stroutput0
-==484== Parent PID: 480
-==484== 
---484-- 
---484-- Valgrind options:
---484--    --tool=memcheck
---484--    --leak-check=full
---484--    --verbose
---484--    --log-file=outputs/strmemoutput0
---484-- Contents of /proc/version:
---484--   Linux version 2.6.32-358.18.1.el6.x86_64 (mockbuild@x86-003.build.bos.redhat.com) (gcc version 4.4.7 20120313 (Red Hat 4.4.7-3) (GCC) ) #1 SMP Fri Aug 2 17:04:38 EDT 2013
---484-- Arch and hwcaps: AMD64, amd64-sse3-cx16
---484-- Page sizes: currently 4096, max supported 4096
---484-- Valgrind library directory: /usr/lib64/valgrind
---484-- Reading syms from /home/shay/a/dawood0/Personal/ECE264/solutions/ECE264/PA05/pa05
---484-- Reading syms from /usr/lib64/valgrind/memcheck-amd64-linux
---484--    object doesn't have a dynamic symbol table
---484-- Reading syms from /lib64/ld-2.12.so
---484-- Scheduler: using generic scheduler lock implementation.
---484-- Reading suppressions file: /usr/lib64/valgrind/default.supp
-==484== embedded gdbserver: reading from /tmp/vgdb-pipe-from-vgdb-to-484-by-dawood0-on-ecelinux17.ecn.purdue.edu
-==484== embedded gdbserver: writing to   /tmp/vgdb-pipe-to-vgdb-from-484-by-dawood0-on-ecelinux17.ecn.purdue.edu
-==484== embedded gdbserver: shared mem   /tmp/vgdb-pipe-shared-mem-vgdb-484-by-dawood0-on-ecelinux17.ecn.purdue.edu
-==484== 
-==484== TO CONTROL THIS PROCESS USING vgdb (which you probably
-==484== don't want to do, unless you know exactly what you're doing,
-==484== or are doing some strange experiment):
-==484==   /usr/lib64/valgrind/../../bin/vgdb --pid=484 ...command...
-==484== 
-==484== TO DEBUG THIS PROCESS USING GDB: start GDB like this
-==484==   /path/to/gdb ./pa05
-==484== and then give GDB the following command
-==484==   target remote | /usr/lib64/valgrind/../../bin/vgdb --pid=484
-==484== --pid is optional if only one valgrind process is running
-==484== 
---484-- REDIR: 0x355a817520 (strlen) redirected to 0x38049551 (vgPlain_amd64_linux_REDIR_FOR_strlen)
---484-- Reading syms from /usr/lib64/valgrind/vgpreload_core-amd64-linux.so
---484-- Reading syms from /usr/lib64/valgrind/vgpreload_memcheck-amd64-linux.so
---484-- REDIR: 0x355a817390 (index) redirected to 0x4a07bf0 (index)
---484-- REDIR: 0x355a817410 (strcmp) redirected to 0x4a08530 (strcmp)
---484-- Reading syms from /lib64/libc-2.12.so
---484-- REDIR: 0x355ac84ec0 (strcasecmp) redirected to 0x480155c (_vgnU_ifunc_wrapper)
---484-- REDIR: 0x355ac87180 (strncasecmp) redirected to 0x480155c (_vgnU_ifunc_wrapper)
---484-- REDIR: 0x355ac82e30 (__GI_strrchr) redirected to 0x4a07a70 (__GI_strrchr)
---484-- REDIR: 0x355ac7f8d0 (strcmp) redirected to 0x480155c (_vgnU_ifunc_wrapper)
---484-- REDIR: 0x355ad27ac0 (__strcmp_sse42) redirected to 0x4a08490 (strcmp)
---484-- REDIR: 0x355ac7a8e0 (malloc) redirected to 0x4a0696c (malloc)
---484-- REDIR: 0x355ac83540 (memchr) redirected to 0x4a085d0 (memchr)
---484-- REDIR: 0x355ac89860 (memcpy) redirected to 0x4a08b20 (memcpy)
---484-- REDIR: 0x355ac81310 (strlen) redirected to 0x480155c (_vgnU_ifunc_wrapper)
---484-- REDIR: 0x355ad32d90 (__strlen_sse42) redirected to 0x4a07f50 (strlen)
---484-- REDIR: 0x355ac80d60 (strcpy) redirected to 0x480155c (_vgnU_ifunc_wrapper)
---484-- REDIR: 0x355ad33820 (???) redirected to 0x4a07f90 (strcpy)
---484-- REDIR: 0x355ac7b710 (free) redirected to 0x4a06369 (free)
---484-- REDIR: 0x355ac81350 (__GI_strlen) redirected to 0x4a07f70 (__GI_strlen)
---484-- REDIR: 0x355ac846f0 (mempcpy) redirected to 0x4a09f80 (mempcpy)
---484-- REDIR: 0x355ac8ace0 (strchrnul) redirected to 0x4a09f10 (strchrnul)
-==484== 
-==484== HEAP SUMMARY:
-==484==     in use at exit: 0 bytes in 0 blocks
-==484==   total heap usage: 91 allocs, 91 frees, 4,620 bytes allocated
-==484== 
-==484== All heap blocks were freed -- no leaks are possible
-==484== 
-==484== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 6 from 6)
---484-- 
---484-- used_suppression:      4 U1004-ARM-_dl_relocate_object
---484-- used_suppression:      2 glibc-2.5.x-on-SUSE-10.2-(PPC)-2a
-==484== 
-==484== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 6 from 6)
+==3622== Memcheck, a memory error detector
+==3622== Copyright (C) 2002-2012, and GNU GPL'd, by Julian Seward et al.
+==3622== Using Valgrind-3.8.1 and LibVEX; rerun with -h for copyright info
+==3622== Command: ./pa05 s inputs/strinput0 outputs/stroutput0
+==3622== Parent PID: 3618
+==3622== 
+--3622-- 
+--3622-- Valgrind options:
+--3622--    --tool=memcheck
+--3622--    --leak-check=full
+--3622--    --verbose
+--3622--    --log-file=outputs/strmemoutput0
+--3622-- Contents of /proc/version:
+--3622--   Linux version 2.6.32-358.18.1.el6.x86_64 (mockbuild@x86-003.build.bos.redhat.com) (gcc version 4.4.7 20120313 (Red Hat 4.4.7-3) (GCC) ) #1 SMP Fri Aug 2 17:04:38 EDT 2013
+--3622-- Arch and hwcaps: AMD64, amd64-sse3-cx16
+--3622-- Page sizes: currently 4096, max supported 4096
+--3622-- Valgrind library directory: /usr/lib64/valgrind
+--3622-- Reading syms from /home/shay/a/dawood0/Personal/ECE264/solutions/ECE264/PA05/pa05
+--3622-- Reading syms from /usr/lib64/valgrind/memcheck-amd64-linux
+--3622--    object doesn't have a dynamic symbol table
+--3622-- Reading syms from /lib64/ld-2.12.so
+--3622-- Scheduler: using generic scheduler lock implementation.
+--3622-- Reading suppressions file: /usr/lib64/valgrind/default.supp
+==3622== embedded gdbserver: reading from /tmp/vgdb-pipe-from-vgdb-to-3622-by-dawood0-on-ecelinux17.ecn.purdue.edu
+==3622== embedded gdbserver: writing to   /tmp/vgdb-pipe-to-vgdb-from-3622-by-dawood0-on-ecelinux17.ecn.purdue.edu
+==3622== embedded gdbserver: shared mem   /tmp/vgdb-pipe-shared-mem-vgdb-3622-by-dawood0-on-ecelinux17.ecn.purdue.edu
+==3622== 
+==3622== TO CONTROL THIS PROCESS USING vgdb (which you probably
+==3622== don't want to do, unless you know exactly what you're doing,
+==3622== or are doing some strange experiment):
+==3622==   /usr/lib64/valgrind/../../bin/vgdb --pid=3622 ...command...
+==3622== 
+==3622== TO DEBUG THIS PROCESS USING GDB: start GDB like this
+==3622==   /path/to/gdb ./pa05
+==3622== and then give GDB the following command
+==3622==   target remote | /usr/lib64/valgrind/../../bin/vgdb --pid=3622
+==3622== --pid is optional if only one valgrind process is running
+==3622== 
+--3622-- REDIR: 0x355a817520 (strlen) redirected to 0x38049551 (vgPlain_amd64_linux_REDIR_FOR_strlen)
+--3622-- Reading syms from /usr/lib64/valgrind/vgpreload_core-amd64-linux.so
+--3622-- Reading syms from /usr/lib64/valgrind/vgpreload_memcheck-amd64-linux.so
+--3622-- REDIR: 0x355a817390 (index) redirected to 0x4a07bf0 (index)
+--3622-- REDIR: 0x355a817410 (strcmp) redirected to 0x4a08530 (strcmp)
+--3622-- Reading syms from /lib64/libc-2.12.so
+--3622-- REDIR: 0x355ac84ec0 (strcasecmp) redirected to 0x480155c (_vgnU_ifunc_wrapper)
+--3622-- REDIR: 0x355ac87180 (strncasecmp) redirected to 0x480155c (_vgnU_ifunc_wrapper)
+--3622-- REDIR: 0x355ac82e30 (__GI_strrchr) redirected to 0x4a07a70 (__GI_strrchr)
+--3622-- REDIR: 0x355ac7f8d0 (strcmp) redirected to 0x480155c (_vgnU_ifunc_wrapper)
+--3622-- REDIR: 0x355ad27ac0 (__strcmp_sse42) redirected to 0x4a08490 (strcmp)
+--3622-- REDIR: 0x355ac7a8e0 (malloc) redirected to 0x4a0696c (malloc)
+--3622-- REDIR: 0x355ac83540 (memchr) redirected to 0x4a085d0 (memchr)
+--3622-- REDIR: 0x355ac89860 (memcpy) redirected to 0x4a08b20 (memcpy)
+--3622-- REDIR: 0x355ac81310 (strlen) redirected to 0x480155c (_vgnU_ifunc_wrapper)
+--3622-- REDIR: 0x355ad32d90 (__strlen_sse42) redirected to 0x4a07f50 (strlen)
+--3622-- REDIR: 0x355ac80d60 (strcpy) redirected to 0x480155c (_vgnU_ifunc_wrapper)
+--3622-- REDIR: 0x355ad33820 (???) redirected to 0x4a07f90 (strcpy)
+--3622-- REDIR: 0x355ac7b710 (free) redirected to 0x4a06369 (free)
+--3622-- REDIR: 0x355ac8ace0 (strchrnul) redirected to 0x4a09f10 (strchrnul)
+--3622-- REDIR: 0x355ac846f0 (mempcpy) redirected to 0x4a09f80 (mempcpy)
+==3622== Invalid write of size 1
+==3622==    at 0x4A07FBF: strcpy (mc_replace_strmem.c:442)
+==3622==    by 0x400DF1: compareString (answer05.c:366)
+==3622==    by 0x355AC34D28: msort_with_tmp (in /lib64/libc-2.12.so)
+==3622==    by 0x355AC34B77: msort_with_tmp (in /lib64/libc-2.12.so)
+==3622==    by 0x355AC34B77: msort_with_tmp (in /lib64/libc-2.12.so)
+==3622==    by 0x355AC34B77: msort_with_tmp (in /lib64/libc-2.12.so)
+==3622==    by 0x355AC34B77: msort_with_tmp (in /lib64/libc-2.12.so)
+==3622==    by 0x355AC34B77: msort_with_tmp (in /lib64/libc-2.12.so)
+==3622==    by 0x355AC351DB: qsort_r (in /lib64/libc-2.12.so)
+==3622==    by 0x400D54: sortString (answer05.c:351)
+==3622==    by 0x401112: main (pa05.c:42)
+==3622==  Address 0x4c3a99f is 0 bytes after a block of size 79 alloc'd
+==3622==    at 0x4A069EE: malloc (vg_replace_malloc.c:270)
+==3622==    by 0x400DC3: compareString (answer05.c:364)
+==3622==    by 0x355AC34D28: msort_with_tmp (in /lib64/libc-2.12.so)
+==3622==    by 0x355AC34B77: msort_with_tmp (in /lib64/libc-2.12.so)
+==3622==    by 0x355AC34B77: msort_with_tmp (in /lib64/libc-2.12.so)
+==3622==    by 0x355AC34B77: msort_with_tmp (in /lib64/libc-2.12.so)
+==3622==    by 0x355AC34B77: msort_with_tmp (in /lib64/libc-2.12.so)
+==3622==    by 0x355AC34B77: msort_with_tmp (in /lib64/libc-2.12.so)
+==3622==    by 0x355AC351DB: qsort_r (in /lib64/libc-2.12.so)
+==3622==    by 0x400D54: sortString (answer05.c:351)
+==3622==    by 0x401112: main (pa05.c:42)
+==3622== 
+==3622== Invalid write of size 1
+==3622==    at 0x4A07FBF: strcpy (mc_replace_strmem.c:442)
+==3622==    by 0x400E0A: compareString (answer05.c:367)
+==3622==    by 0x355AC34D28: msort_with_tmp (in /lib64/libc-2.12.so)
+==3622==    by 0x355AC34B77: msort_with_tmp (in /lib64/libc-2.12.so)
+==3622==    by 0x355AC34B77: msort_with_tmp (in /lib64/libc-2.12.so)
+==3622==    by 0x355AC34B77: msort_with_tmp (in /lib64/libc-2.12.so)
+==3622==    by 0x355AC34B77: msort_with_tmp (in /lib64/libc-2.12.so)
+==3622==    by 0x355AC34B77: msort_with_tmp (in /lib64/libc-2.12.so)
+==3622==    by 0x355AC351DB: qsort_r (in /lib64/libc-2.12.so)
+==3622==    by 0x400D54: sortString (answer05.c:351)
+==3622==    by 0x401112: main (pa05.c:42)
+==3622==  Address 0x4c3a9e1 is 0 bytes after a block of size 1 alloc'd
+==3622==    at 0x4A069EE: malloc (vg_replace_malloc.c:270)
+==3622==    by 0x400DD4: compareString (answer05.c:365)
+==3622==    by 0x355AC34D28: msort_with_tmp (in /lib64/libc-2.12.so)
+==3622==    by 0x355AC34B77: msort_with_tmp (in /lib64/libc-2.12.so)
+==3622==    by 0x355AC34B77: msort_with_tmp (in /lib64/libc-2.12.so)
+==3622==    by 0x355AC34B77: msort_with_tmp (in /lib64/libc-2.12.so)
+==3622==    by 0x355AC34B77: msort_with_tmp (in /lib64/libc-2.12.so)
+==3622==    by 0x355AC34B77: msort_with_tmp (in /lib64/libc-2.12.so)
+==3622==    by 0x355AC351DB: qsort_r (in /lib64/libc-2.12.so)
+==3622==    by 0x400D54: sortString (answer05.c:351)
+==3622==    by 0x401112: main (pa05.c:42)
+==3622== 
+==3622== Invalid write of size 1
+==3622==    at 0x4A07FBF: strcpy (mc_replace_strmem.c:442)
+==3622==    by 0x400DF1: compareString (answer05.c:366)
+==3622==    by 0x355AC34D28: msort_with_tmp (in /lib64/libc-2.12.so)
+==3622==    by 0x355AC34B87: msort_with_tmp (in /lib64/libc-2.12.so)
+==3622==    by 0x355AC34B87: msort_with_tmp (in /lib64/libc-2.12.so)
+==3622==    by 0x355AC34B77: msort_with_tmp (in /lib64/libc-2.12.so)
+==3622==    by 0x355AC34B77: msort_with_tmp (in /lib64/libc-2.12.so)
+==3622==    by 0x355AC34B77: msort_with_tmp (in /lib64/libc-2.12.so)
+==3622==    by 0x355AC34B77: msort_with_tmp (in /lib64/libc-2.12.so)
+==3622==    by 0x355AC351DB: qsort_r (in /lib64/libc-2.12.so)
+==3622==    by 0x400D54: sortString (answer05.c:351)
+==3622==    by 0x401112: main (pa05.c:42)
+==3622==  Address 0x4c3aa31 is 0 bytes after a block of size 1 alloc'd
+==3622==    at 0x4A069EE: malloc (vg_replace_malloc.c:270)
+==3622==    by 0x400DC3: compareString (answer05.c:364)
+==3622==    by 0x355AC34D28: msort_with_tmp (in /lib64/libc-2.12.so)
+==3622==    by 0x355AC34B87: msort_with_tmp (in /lib64/libc-2.12.so)
+==3622==    by 0x355AC34B87: msort_with_tmp (in /lib64/libc-2.12.so)
+==3622==    by 0x355AC34B77: msort_with_tmp (in /lib64/libc-2.12.so)
+==3622==    by 0x355AC34B77: msort_with_tmp (in /lib64/libc-2.12.so)
+==3622==    by 0x355AC34B77: msort_with_tmp (in /lib64/libc-2.12.so)
+==3622==    by 0x355AC34B77: msort_with_tmp (in /lib64/libc-2.12.so)
+==3622==    by 0x355AC351DB: qsort_r (in /lib64/libc-2.12.so)
+==3622==    by 0x400D54: sortString (answer05.c:351)
+==3622==    by 0x401112: main (pa05.c:42)
+==3622== 
+==3622== Invalid write of size 1
+==3622==    at 0x4A07FBF: strcpy (mc_replace_strmem.c:442)
+==3622==    by 0x400E0A: compareString (answer05.c:367)
+==3622==    by 0x355AC34D28: msort_with_tmp (in /lib64/libc-2.12.so)
+==3622==    by 0x355AC34B87: msort_with_tmp (in /lib64/libc-2.12.so)
+==3622==    by 0x355AC34B87: msort_with_tmp (in /lib64/libc-2.12.so)
+==3622==    by 0x355AC34B77: msort_with_tmp (in /lib64/libc-2.12.so)
+==3622==    by 0x355AC34B77: msort_with_tmp (in /lib64/libc-2.12.so)
+==3622==    by 0x355AC34B77: msort_with_tmp (in /lib64/libc-2.12.so)
+==3622==    by 0x355AC34B77: msort_with_tmp (in /lib64/libc-2.12.so)
+==3622==    by 0x355AC351DB: qsort_r (in /lib64/libc-2.12.so)
+==3622==    by 0x400D54: sortString (answer05.c:351)
+==3622==    by 0x401112: main (pa05.c:42)
+==3622==  Address 0x4c3aa85 is 0 bytes after a block of size 5 alloc'd
+==3622==    at 0x4A069EE: malloc (vg_replace_malloc.c:270)
+==3622==    by 0x400DD4: compareString (answer05.c:365)
+==3622==    by 0x355AC34D28: msort_with_tmp (in /lib64/libc-2.12.so)
+==3622==    by 0x355AC34B87: msort_with_tmp (in /lib64/libc-2.12.so)
+==3622==    by 0x355AC34B87: msort_with_tmp (in /lib64/libc-2.12.so)
+==3622==    by 0x355AC34B77: msort_with_tmp (in /lib64/libc-2.12.so)
+==3622==    by 0x355AC34B77: msort_with_tmp (in /lib64/libc-2.12.so)
+==3622==    by 0x355AC34B77: msort_with_tmp (in /lib64/libc-2.12.so)
+==3622==    by 0x355AC34B77: msort_with_tmp (in /lib64/libc-2.12.so)
+==3622==    by 0x355AC351DB: qsort_r (in /lib64/libc-2.12.so)
+==3622==    by 0x400D54: sortString (answer05.c:351)
+==3622==    by 0x401112: main (pa05.c:42)
+==3622== 
+==3622== Invalid write of size 1
+==3622==    at 0x4A07FBF: strcpy (mc_replace_strmem.c:442)
+==3622==    by 0x400DF1: compareString (answer05.c:366)
+==3622==    by 0x355AC34D28: msort_with_tmp (in /lib64/libc-2.12.so)
+==3622==    by 0x355AC351DB: qsort_r (in /lib64/libc-2.12.so)
+==3622==    by 0x400D54: sortString (answer05.c:351)
+==3622==    by 0x401112: main (pa05.c:42)
+==3622==  Address 0x4c4dee2 is 0 bytes after a block of size 2 alloc'd
+==3622==    at 0x4A069EE: malloc (vg_replace_malloc.c:270)
+==3622==    by 0x400DC3: compareString (answer05.c:364)
+==3622==    by 0x355AC34D28: msort_with_tmp (in /lib64/libc-2.12.so)
+==3622==    by 0x355AC351DB: qsort_r (in /lib64/libc-2.12.so)
+==3622==    by 0x400D54: sortString (answer05.c:351)
+==3622==    by 0x401112: main (pa05.c:42)
+==3622== 
+==3622== Invalid write of size 1
+==3622==    at 0x4A07FBF: strcpy (mc_replace_strmem.c:442)
+==3622==    by 0x400E0A: compareString (answer05.c:367)
+==3622==    by 0x355AC34D28: msort_with_tmp (in /lib64/libc-2.12.so)
+==3622==    by 0x355AC351DB: qsort_r (in /lib64/libc-2.12.so)
+==3622==    by 0x400D54: sortString (answer05.c:351)
+==3622==    by 0x401112: main (pa05.c:42)
+==3622==  Address 0x4c4df31 is 0 bytes after a block of size 1 alloc'd
+==3622==    at 0x4A069EE: malloc (vg_replace_malloc.c:270)
+==3622==    by 0x400DD4: compareString (answer05.c:365)
+==3622==    by 0x355AC34D28: msort_with_tmp (in /lib64/libc-2.12.so)
+==3622==    by 0x355AC351DB: qsort_r (in /lib64/libc-2.12.so)
+==3622==    by 0x400D54: sortString (answer05.c:351)
+==3622==    by 0x401112: main (pa05.c:42)
+==3622== 
+==3622== 
+==3622== HEAP SUMMARY:
+==3622==     in use at exit: 0 bytes in 0 blocks
+==3622==   total heap usage: 1,015 allocs, 1,015 frees, 35,567 bytes allocated
+==3622== 
+==3622== All heap blocks were freed -- no leaks are possible
+==3622== 
+==3622== ERROR SUMMARY: 924 errors from 6 contexts (suppressed: 6 from 6)
+==3622== 
+==3622== 87 errors in context 1 of 6:
+==3622== Invalid write of size 1
+==3622==    at 0x4A07FBF: strcpy (mc_replace_strmem.c:442)
+==3622==    by 0x400E0A: compareString (answer05.c:367)
+==3622==    by 0x355AC34D28: msort_with_tmp (in /lib64/libc-2.12.so)
+==3622==    by 0x355AC351DB: qsort_r (in /lib64/libc-2.12.so)
+==3622==    by 0x400D54: sortString (answer05.c:351)
+==3622==    by 0x401112: main (pa05.c:42)
+==3622==  Address 0x4c4df31 is 0 bytes after a block of size 1 alloc'd
+==3622==    at 0x4A069EE: malloc (vg_replace_malloc.c:270)
+==3622==    by 0x400DD4: compareString (answer05.c:365)
+==3622==    by 0x355AC34D28: msort_with_tmp (in /lib64/libc-2.12.so)
+==3622==    by 0x355AC351DB: qsort_r (in /lib64/libc-2.12.so)
+==3622==    by 0x400D54: sortString (answer05.c:351)
+==3622==    by 0x401112: main (pa05.c:42)
+==3622== 
+==3622== 
+==3622== 87 errors in context 2 of 6:
+==3622== Invalid write of size 1
+==3622==    at 0x4A07FBF: strcpy (mc_replace_strmem.c:442)
+==3622==    by 0x400DF1: compareString (answer05.c:366)
+==3622==    by 0x355AC34D28: msort_with_tmp (in /lib64/libc-2.12.so)
+==3622==    by 0x355AC351DB: qsort_r (in /lib64/libc-2.12.so)
+==3622==    by 0x400D54: sortString (answer05.c:351)
+==3622==    by 0x401112: main (pa05.c:42)
+==3622==  Address 0x4c4dee2 is 0 bytes after a block of size 2 alloc'd
+==3622==    at 0x4A069EE: malloc (vg_replace_malloc.c:270)
+==3622==    by 0x400DC3: compareString (answer05.c:364)
+==3622==    by 0x355AC34D28: msort_with_tmp (in /lib64/libc-2.12.so)
+==3622==    by 0x355AC351DB: qsort_r (in /lib64/libc-2.12.so)
+==3622==    by 0x400D54: sortString (answer05.c:351)
+==3622==    by 0x401112: main (pa05.c:42)
+==3622== 
+==3622== 
+==3622== 168 errors in context 3 of 6:
+==3622== Invalid write of size 1
+==3622==    at 0x4A07FBF: strcpy (mc_replace_strmem.c:442)
+==3622==    by 0x400E0A: compareString (answer05.c:367)
+==3622==    by 0x355AC34D28: msort_with_tmp (in /lib64/libc-2.12.so)
+==3622==    by 0x355AC34B77: msort_with_tmp (in /lib64/libc-2.12.so)
+==3622==    by 0x355AC34B77: msort_with_tmp (in /lib64/libc-2.12.so)
+==3622==    by 0x355AC34B77: msort_with_tmp (in /lib64/libc-2.12.so)
+==3622==    by 0x355AC34B77: msort_with_tmp (in /lib64/libc-2.12.so)
+==3622==    by 0x355AC34B77: msort_with_tmp (in /lib64/libc-2.12.so)
+==3622==    by 0x355AC351DB: qsort_r (in /lib64/libc-2.12.so)
+==3622==    by 0x400D54: sortString (answer05.c:351)
+==3622==    by 0x401112: main (pa05.c:42)
+==3622==  Address 0x4c3a9e1 is 0 bytes after a block of size 1 alloc'd
+==3622==    at 0x4A069EE: malloc (vg_replace_malloc.c:270)
+==3622==    by 0x400DD4: compareString (answer05.c:365)
+==3622==    by 0x355AC34D28: msort_with_tmp (in /lib64/libc-2.12.so)
+==3622==    by 0x355AC34B77: msort_with_tmp (in /lib64/libc-2.12.so)
+==3622==    by 0x355AC34B77: msort_with_tmp (in /lib64/libc-2.12.so)
+==3622==    by 0x355AC34B77: msort_with_tmp (in /lib64/libc-2.12.so)
+==3622==    by 0x355AC34B77: msort_with_tmp (in /lib64/libc-2.12.so)
+==3622==    by 0x355AC34B77: msort_with_tmp (in /lib64/libc-2.12.so)
+==3622==    by 0x355AC351DB: qsort_r (in /lib64/libc-2.12.so)
+==3622==    by 0x400D54: sortString (answer05.c:351)
+==3622==    by 0x401112: main (pa05.c:42)
+==3622== 
+==3622== 
+==3622== 168 errors in context 4 of 6:
+==3622== Invalid write of size 1
+==3622==    at 0x4A07FBF: strcpy (mc_replace_strmem.c:442)
+==3622==    by 0x400DF1: compareString (answer05.c:366)
+==3622==    by 0x355AC34D28: msort_with_tmp (in /lib64/libc-2.12.so)
+==3622==    by 0x355AC34B77: msort_with_tmp (in /lib64/libc-2.12.so)
+==3622==    by 0x355AC34B77: msort_with_tmp (in /lib64/libc-2.12.so)
+==3622==    by 0x355AC34B77: msort_with_tmp (in /lib64/libc-2.12.so)
+==3622==    by 0x355AC34B77: msort_with_tmp (in /lib64/libc-2.12.so)
+==3622==    by 0x355AC34B77: msort_with_tmp (in /lib64/libc-2.12.so)
+==3622==    by 0x355AC351DB: qsort_r (in /lib64/libc-2.12.so)
+==3622==    by 0x400D54: sortString (answer05.c:351)
+==3622==    by 0x401112: main (pa05.c:42)
+==3622==  Address 0x4c3a99f is 0 bytes after a block of size 79 alloc'd
+==3622==    at 0x4A069EE: malloc (vg_replace_malloc.c:270)
+==3622==    by 0x400DC3: compareString (answer05.c:364)
+==3622==    by 0x355AC34D28: msort_with_tmp (in /lib64/libc-2.12.so)
+==3622==    by 0x355AC34B77: msort_with_tmp (in /lib64/libc-2.12.so)
+==3622==    by 0x355AC34B77: msort_with_tmp (in /lib64/libc-2.12.so)
+==3622==    by 0x355AC34B77: msort_with_tmp (in /lib64/libc-2.12.so)
+==3622==    by 0x355AC34B77: msort_with_tmp (in /lib64/libc-2.12.so)
+==3622==    by 0x355AC34B77: msort_with_tmp (in /lib64/libc-2.12.so)
+==3622==    by 0x355AC351DB: qsort_r (in /lib64/libc-2.12.so)
+==3622==    by 0x400D54: sortString (answer05.c:351)
+==3622==    by 0x401112: main (pa05.c:42)
+==3622== 
+==3622== 
+==3622== 207 errors in context 5 of 6:
+==3622== Invalid write of size 1
+==3622==    at 0x4A07FBF: strcpy (mc_replace_strmem.c:442)
+==3622==    by 0x400E0A: compareString (answer05.c:367)
+==3622==    by 0x355AC34D28: msort_with_tmp (in /lib64/libc-2.12.so)
+==3622==    by 0x355AC34B87: msort_with_tmp (in /lib64/libc-2.12.so)
+==3622==    by 0x355AC34B87: msort_with_tmp (in /lib64/libc-2.12.so)
+==3622==    by 0x355AC34B77: msort_with_tmp (in /lib64/libc-2.12.so)
+==3622==    by 0x355AC34B77: msort_with_tmp (in /lib64/libc-2.12.so)
+==3622==    by 0x355AC34B77: msort_with_tmp (in /lib64/libc-2.12.so)
+==3622==    by 0x355AC34B77: msort_with_tmp (in /lib64/libc-2.12.so)
+==3622==    by 0x355AC351DB: qsort_r (in /lib64/libc-2.12.so)
+==3622==    by 0x400D54: sortString (answer05.c:351)
+==3622==    by 0x401112: main (pa05.c:42)
+==3622==  Address 0x4c3aa85 is 0 bytes after a block of size 5 alloc'd
+==3622==    at 0x4A069EE: malloc (vg_replace_malloc.c:270)
+==3622==    by 0x400DD4: compareString (answer05.c:365)
+==3622==    by 0x355AC34D28: msort_with_tmp (in /lib64/libc-2.12.so)
+==3622==    by 0x355AC34B87: msort_with_tmp (in /lib64/libc-2.12.so)
+==3622==    by 0x355AC34B87: msort_with_tmp (in /lib64/libc-2.12.so)
+==3622==    by 0x355AC34B77: msort_with_tmp (in /lib64/libc-2.12.so)
+==3622==    by 0x355AC34B77: msort_with_tmp (in /lib64/libc-2.12.so)
+==3622==    by 0x355AC34B77: msort_with_tmp (in /lib64/libc-2.12.so)
+==3622==    by 0x355AC34B77: msort_with_tmp (in /lib64/libc-2.12.so)
+==3622==    by 0x355AC351DB: qsort_r (in /lib64/libc-2.12.so)
+==3622==    by 0x400D54: sortString (answer05.c:351)
+==3622==    by 0x401112: main (pa05.c:42)
+==3622== 
+==3622== 
+==3622== 207 errors in context 6 of 6:
+==3622== Invalid write of size 1
+==3622==    at 0x4A07FBF: strcpy (mc_replace_strmem.c:442)
+==3622==    by 0x400DF1: compareString (answer05.c:366)
+==3622==    by 0x355AC34D28: msort_with_tmp (in /lib64/libc-2.12.so)
+==3622==    by 0x355AC34B87: msort_with_tmp (in /lib64/libc-2.12.so)
+==3622==    by 0x355AC34B87: msort_with_tmp (in /lib64/libc-2.12.so)
+==3622==    by 0x355AC34B77: msort_with_tmp (in /lib64/libc-2.12.so)
+==3622==    by 0x355AC34B77: msort_with_tmp (in /lib64/libc-2.12.so)
+==3622==    by 0x355AC34B77: msort_with_tmp (in /lib64/libc-2.12.so)
+==3622==    by 0x355AC34B77: msort_with_tmp (in /lib64/libc-2.12.so)
+==3622==    by 0x355AC351DB: qsort_r (in /lib64/libc-2.12.so)
+==3622==    by 0x400D54: sortString (answer05.c:351)
+==3622==    by 0x401112: main (pa05.c:42)
+==3622==  Address 0x4c3aa31 is 0 bytes after a block of size 1 alloc'd
+==3622==    at 0x4A069EE: malloc (vg_replace_malloc.c:270)
+==3622==    by 0x400DC3: compareString (answer05.c:364)
+==3622==    by 0x355AC34D28: msort_with_tmp (in /lib64/libc-2.12.so)
+==3622==    by 0x355AC34B87: msort_with_tmp (in /lib64/libc-2.12.so)
+==3622==    by 0x355AC34B87: msort_with_tmp (in /lib64/libc-2.12.so)
+==3622==    by 0x355AC34B77: msort_with_tmp (in /lib64/libc-2.12.so)
+==3622==    by 0x355AC34B77: msort_with_tmp (in /lib64/libc-2.12.so)
+==3622==    by 0x355AC34B77: msort_with_tmp (in /lib64/libc-2.12.so)
+==3622==    by 0x355AC34B77: msort_with_tmp (in /lib64/libc-2.12.so)
+==3622==    by 0x355AC351DB: qsort_r (in /lib64/libc-2.12.so)
+==3622==    by 0x400D54: sortString (answer05.c:351)
+==3622==    by 0x401112: main (pa05.c:42)
+==3622== 
+--3622-- 
+--3622-- used_suppression:      4 U1004-ARM-_dl_relocate_object
+--3622-- used_suppression:      2 glibc-2.5.x-on-SUSE-10.2-(PPC)-2a
+==3622== 
+==3622== ERROR SUMMARY: 924 errors from 6 contexts (suppressed: 6 from 6)

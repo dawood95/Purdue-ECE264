@@ -1,4 +1,9 @@
+apple
 cat
 dog
-apple
 mouse
+,
+.
+/
+1
+2

@@ -356,26 +356,57 @@ int compareString(const void *p1, const void *p2)
   char **a = (char * *)p1;
   char **b = (char * *)p2;
   int i = 0;
-  printf("\n%s\n",a[2]);
-  /* while((i < strlen(a)) && (i < strlen(b))) */
-  /*   { */
-  /*     if(a[i] > b[i]) */
-  /* 	{ */
-  /* 	  return 1; */
-  /* 	} */
-  /*     if(a[i] < b[i]) */
-  /* 	{ */
-  /* 	  return -1; */
-  /* 	} */
-  /*     i++; */
-  /*   } */
-  /* if(strlen(a) == strlen(b)) */
-  /*   { */
-  /*     return 0; */
-  /*   } */
-  /* if(strlen(a) < strlen(b)) */
-  /*   { */
-  /*     return -1; */
-  /*   } */
+  char *s1 = NULL;
+  char *s2 = NULL;
+  int length_1 = strlen(*a);
+  int length_2 = strlen(*b);
+
+  s1 = malloc(length_1);
+  s2 = malloc(length_2);
+  strcpy(s1,*a);
+  strcpy(s2,*b);
+
+  for(i = 0; i < length_1 && i < length_2 ; i++)
+    {
+      if(s1[i] == '\\' && s2[i] != '\\')
+	{
+	  free(s1);
+	  free(s2);
+	  return -1;
+	}
+      if(s1[i] != '\\' && s2[i] == '\\')
+	{
+	  free(s1);
+	  free(s2);
+	  return 1;
+	}
+      if(s1[i] < s2[i])
+	{
+	  free(s1);
+	  free(s2);
+	  return -1;
+	}
+      if(s1[i] > s2[i])
+	{
+	  free(s1);
+	  free(s2);
+	  return 1;
+	}
+    }
+  if(length_1 == length_2)
+    {
+      free(s1);
+      free(s2);
+      return 0;
+    }
+  if(length_1 < length_2)
+    {
+      free(s1);
+      free(s2);
+      return -1;
+    }
+  free(s1);
+  free(s2);
   return 1;
 }
+
