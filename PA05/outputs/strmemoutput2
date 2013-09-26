@@ -1,0 +1,73 @@
+==545== Memcheck, a memory error detector
+==545== Copyright (C) 2002-2012, and GNU GPL'd, by Julian Seward et al.
+==545== Using Valgrind-3.8.1 and LibVEX; rerun with -h for copyright info
+==545== Command: ./pa05 s inputs/strinput2 outputs/stroutput2
+==545== Parent PID: 541
+==545== 
+--545-- 
+--545-- Valgrind options:
+--545--    --tool=memcheck
+--545--    --leak-check=full
+--545--    --verbose
+--545--    --log-file=outputs/strmemoutput2
+--545-- Contents of /proc/version:
+--545--   Linux version 2.6.32-358.18.1.el6.x86_64 (mockbuild@x86-003.build.bos.redhat.com) (gcc version 4.4.7 20120313 (Red Hat 4.4.7-3) (GCC) ) #1 SMP Fri Aug 2 17:04:38 EDT 2013
+--545-- Arch and hwcaps: AMD64, amd64-sse3-cx16
+--545-- Page sizes: currently 4096, max supported 4096
+--545-- Valgrind library directory: /usr/lib64/valgrind
+--545-- Reading syms from /home/shay/a/dawood0/Personal/ECE264/solutions/ECE264/PA05/pa05
+--545-- Reading syms from /usr/lib64/valgrind/memcheck-amd64-linux
+--545--    object doesn't have a dynamic symbol table
+--545-- Reading syms from /lib64/ld-2.12.so
+--545-- Scheduler: using generic scheduler lock implementation.
+--545-- Reading suppressions file: /usr/lib64/valgrind/default.supp
+==545== embedded gdbserver: reading from /tmp/vgdb-pipe-from-vgdb-to-545-by-dawood0-on-ecelinux17.ecn.purdue.edu
+==545== embedded gdbserver: writing to   /tmp/vgdb-pipe-to-vgdb-from-545-by-dawood0-on-ecelinux17.ecn.purdue.edu
+==545== embedded gdbserver: shared mem   /tmp/vgdb-pipe-shared-mem-vgdb-545-by-dawood0-on-ecelinux17.ecn.purdue.edu
+==545== 
+==545== TO CONTROL THIS PROCESS USING vgdb (which you probably
+==545== don't want to do, unless you know exactly what you're doing,
+==545== or are doing some strange experiment):
+==545==   /usr/lib64/valgrind/../../bin/vgdb --pid=545 ...command...
+==545== 
+==545== TO DEBUG THIS PROCESS USING GDB: start GDB like this
+==545==   /path/to/gdb ./pa05
+==545== and then give GDB the following command
+==545==   target remote | /usr/lib64/valgrind/../../bin/vgdb --pid=545
+==545== --pid is optional if only one valgrind process is running
+==545== 
+--545-- REDIR: 0x355a817520 (strlen) redirected to 0x38049551 (vgPlain_amd64_linux_REDIR_FOR_strlen)
+--545-- Reading syms from /usr/lib64/valgrind/vgpreload_core-amd64-linux.so
+--545-- Reading syms from /usr/lib64/valgrind/vgpreload_memcheck-amd64-linux.so
+--545-- REDIR: 0x355a817390 (index) redirected to 0x4a07bf0 (index)
+--545-- REDIR: 0x355a817410 (strcmp) redirected to 0x4a08530 (strcmp)
+--545-- Reading syms from /lib64/libc-2.12.so
+--545-- REDIR: 0x355ac84ec0 (strcasecmp) redirected to 0x480155c (_vgnU_ifunc_wrapper)
+--545-- REDIR: 0x355ac87180 (strncasecmp) redirected to 0x480155c (_vgnU_ifunc_wrapper)
+--545-- REDIR: 0x355ac82e30 (__GI_strrchr) redirected to 0x4a07a70 (__GI_strrchr)
+--545-- REDIR: 0x355ac7f8d0 (strcmp) redirected to 0x480155c (_vgnU_ifunc_wrapper)
+--545-- REDIR: 0x355ad27ac0 (__strcmp_sse42) redirected to 0x4a08490 (strcmp)
+--545-- REDIR: 0x355ac7a8e0 (malloc) redirected to 0x4a0696c (malloc)
+--545-- REDIR: 0x355ac83540 (memchr) redirected to 0x4a085d0 (memchr)
+--545-- REDIR: 0x355ac89860 (memcpy) redirected to 0x4a08b20 (memcpy)
+--545-- REDIR: 0x355ac81310 (strlen) redirected to 0x480155c (_vgnU_ifunc_wrapper)
+--545-- REDIR: 0x355ad32d90 (__strlen_sse42) redirected to 0x4a07f50 (strlen)
+--545-- REDIR: 0x355ac80d60 (strcpy) redirected to 0x480155c (_vgnU_ifunc_wrapper)
+--545-- REDIR: 0x355ad33820 (???) redirected to 0x4a07f90 (strcpy)
+--545-- REDIR: 0x355ac7b710 (free) redirected to 0x4a06369 (free)
+--545-- REDIR: 0x355ac81350 (__GI_strlen) redirected to 0x4a07f70 (__GI_strlen)
+--545-- REDIR: 0x355ac846f0 (mempcpy) redirected to 0x4a09f80 (mempcpy)
+--545-- REDIR: 0x355ac8ace0 (strchrnul) redirected to 0x4a09f10 (strchrnul)
+==545== 
+==545== HEAP SUMMARY:
+==545==     in use at exit: 0 bytes in 0 blocks
+==545==   total heap usage: 46 allocs, 46 frees, 2,912 bytes allocated
+==545== 
+==545== All heap blocks were freed -- no leaks are possible
+==545== 
+==545== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 6 from 6)
+--545-- 
+--545-- used_suppression:      4 U1004-ARM-_dl_relocate_object
+--545-- used_suppression:      2 glibc-2.5.x-on-SUSE-10.2-(PPC)-2a
+==545== 
+==545== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 6 from 6)

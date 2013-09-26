@@ -4,6 +4,9 @@
 #include "pa05.h"
 #define MAXIMUM_LENGTH 80
 
+int compareInt(const void *, const void *);
+int compareString(const void *, const void *);
+
 /*
  * Read a file of integers.
  *
@@ -63,6 +66,29 @@
 
 int * readInteger(char * filename, int * numInteger)
 {
+  FILE * inFile;
+  int value = 0;
+  int i = 0;
+  int * array;
+  inFile = fopen(filename,"r");
+  if(inFile == NULL)
+    {
+      return NULL;
+    }
+  *numInteger = 0;
+  while(fscanf(inFile,"%i",&value) == 1)
+    {
+      *numInteger+=1;
+    }
+  fseek(inFile,0,0);
+  array = malloc(*numInteger * sizeof(int));
+  while(fscanf(inFile,"%i",&value) == 1)
+    {
+      array[i] = value;
+      i++;
+    }
+  fclose(inFile);
+  return array;
 }
 
 /* ----------------------------------------------- */
@@ -133,6 +159,31 @@ int * readInteger(char * filename, int * numInteger)
 
 char * * readString(char * filename, int * numString)
 {
+  FILE *inFile;
+  char **array;
+  char string[MAXIMUM_LENGTH];
+  int i = 0;
+
+  inFile = fopen(filename,"r");
+  if(inFile == NULL)
+    {
+      return NULL;
+    }
+  *numString = 0;
+  while(fgets(string,MAXIMUM_LENGTH,inFile) != NULL)
+    {
+      *numString += 1;
+    }
+  fseek(inFile,0,0);
+  array = malloc(sizeof(char *) * *numString);
+  while(fgets(string,MAXIMUM_LENGTH,inFile) != NULL)
+    {
+      array[i] = malloc(sizeof(char) * (strlen(string) + 1));
+      strcpy(array[i],string);
+      i++;
+    } 
+  fclose(inFile);
+  return array;
 }
 
 /* ----------------------------------------------- */
@@ -141,6 +192,11 @@ char * * readString(char * filename, int * numString)
  */
 void printInteger(int * arrInteger, int numInteger)
 {
+  int i = 0;
+  for(i = 0; i <numInteger; i++)
+    {
+      printf("%d\n",arrInteger[i]);
+    }
 }
 
 /* ----------------------------------------------- */
@@ -151,6 +207,11 @@ void printInteger(int * arrInteger, int numInteger)
  */
 void printString(char * * arrString, int numString)
 {
+  int i = 0;
+  for(i = 0; i <numString; i++)
+    {
+      printf("%s",arrString[i]);
+    }
 }
 
 /* ----------------------------------------------- */
@@ -159,6 +220,7 @@ void printString(char * * arrString, int numString)
  */
 void freeInteger(int * arrInteger, int numInteger)
 {
+  free(arrInteger);
 }
 
 /* ----------------------------------------------- */
@@ -169,6 +231,12 @@ void freeInteger(int * arrInteger, int numInteger)
  */
 void freeString(char * * arrString, int numString)
 {
+  int i = 0;
+  for(i =0; i< numString; i++)
+    {
+      free(arrString[i]);
+    }
+  free(arrString);
 }
 
 /* ----------------------------------------------- */
@@ -191,6 +259,18 @@ void freeString(char * * arrString, int numString)
 
 int saveInteger(char * filename, int * arrInteger, int numInteger)
 {
+  FILE *inFile;
+  int i;
+  inFile = fopen(filename,"w");
+  for(i = 0; i< numInteger;i++)
+    {
+      if(fprintf(inFile,"%d\n",arrInteger[i]) == 0)
+	{
+	  return 0;
+	}
+    }
+  fclose(inFile);
+  return 1;
 }
 
 /* ----------------------------------------------- */
@@ -213,6 +293,18 @@ int saveInteger(char * filename, int * arrInteger, int numInteger)
 
 int saveString(char * filename, char * * arrString, int numString)
 {
+  FILE *inFile;
+  int i;
+  inFile = fopen(filename,"w");
+  for(i = 0; i< numString;i++)
+    {
+      if(fprintf(inFile,"%s",arrString[i]) == 0)
+	{
+	  return 0;
+	}
+    }
+  fclose(inFile);
+  return 1;
 }
 
 /* ----------------------------------------------- */
@@ -225,8 +317,23 @@ int saveString(char * filename, char * * arrString, int numString)
 
 void sortInteger(int * arrInteger, int numInteger)
 {
+  qsort(arrInteger,numInteger,sizeof(int),compareInt);
 }
 
+int compareInt(const void *p1, const void *p2)
+{
+  int *a = (int *)p1;
+  int *b = (int *)p2;
+  if(*a > *b)
+    {
+      return 1;
+    }
+  if(*a < *b)
+    {
+      return -1;
+    }
+  return 0;
+}
 
 /* ----------------------------------------------- */
 /*
@@ -241,6 +348,34 @@ void sortInteger(int * arrInteger, int numInteger)
 
 void sortString(char * * arrString, int numString)
 {
+  qsort(arrString,numString,sizeof(char *),compareString);
 }
 
-
+int compareString(const void *p1, const void *p2)
+{
+  char **a = (char * *)p1;
+  char **b = (char * *)p2;
+  int i = 0;
+  printf("\n%s\n",a[2]);
+  /* while((i < strlen(a)) && (i < strlen(b))) */
+  /*   { */
+  /*     if(a[i] > b[i]) */
+  /* 	{ */
+  /* 	  return 1; */
+  /* 	} */
+  /*     if(a[i] < b[i]) */
+  /* 	{ */
+  /* 	  return -1; */
+  /* 	} */
+  /*     i++; */
+  /*   } */
+  /* if(strlen(a) == strlen(b)) */
+  /*   { */
+  /*     return 0; */
+  /*   } */
+  /* if(strlen(a) < strlen(b)) */
+  /*   { */
+  /*     return -1; */
+  /*   } */
+  return 1;
+}
