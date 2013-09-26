@@ -361,20 +361,20 @@ int compareString(const void *p1, const void *p2)
   int length_1 = strlen(*a);
   int length_2 = strlen(*b);
 
-  s1 = malloc(length_1);
-  s2 = malloc(length_2);
+  s1 = malloc(length_1 + 1);
+  s2 = malloc(length_2 + 1);
   strcpy(s1,*a);
   strcpy(s2,*b);
 
   for(i = 0; i < length_1 && i < length_2 ; i++)
     {
-      if(s1[i] == '\\' && s2[i] != '\\')
+      if(s1[i] == '\220' && s2[i] != '\220')
 	{
 	  free(s1);
 	  free(s2);
 	  return -1;
 	}
-      if(s1[i] != '\\' && s2[i] == '\\')
+      if(s1[i] != '\220' && s2[i] == '\220')
 	{
 	  free(s1);
 	  free(s2);
