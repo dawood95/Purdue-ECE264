@@ -1,8 +1,10 @@
+CONFORMING TO
+NAME
+QSORT(3)                   Linux Programmer's Manual                  QSORT(3)
+RETURN VALUE
 ê
 ê
 ê
-
-
 
 
 
@@ -74,12 +76,10 @@
        }
        }
 COLOPHON
-CONFORMING TO
 DESCRIPTION
 EXAMPLE
-NAME
 NOTES
-QSORT(3)                   Linux Programmer's Manual                  QSORT(3)
-RETURN VALUE
 SEE ALSO
 SYNOPSIS
+
+
