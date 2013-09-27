@@ -368,18 +368,6 @@ int compareString(const void *p1, const void *p2)
 
   for(i = 0; i < length_1 && i < length_2 ; i++)
     {
-      if(s1[i] > ' ' && s2[i] < ' ')
-	{
-	  free(s1);
-	  free(s2);
-	  return -1;
-	}
-      if(s1[i] < ' ' && s2[i] > ' ')
-	{
-	  free(s1);
-	  free(s2);
-	  return 1;
-	}
       if(s1[i] < s2[i])
 	{
 	  free(s1);
@@ -397,7 +385,7 @@ int compareString(const void *p1, const void *p2)
     {
       free(s1);
       free(s2);
-      return 0;
+      return 1;
     }
   if(length_1 < length_2)
     {
