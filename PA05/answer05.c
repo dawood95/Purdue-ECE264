@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include "pa05.h"
-#define MAXIMUM_LENGTH 80
+#define MAXIMUM_LENGTH 180
 
 int compareInt(const void *, const void *);
 int compareString(const void *, const void *);
@@ -385,7 +385,7 @@ int compareString(const void *p1, const void *p2)
     {
       free(s1);
       free(s2);
-      return 1;
+      return -1;
     }
   if(length_1 < length_2)
     {
