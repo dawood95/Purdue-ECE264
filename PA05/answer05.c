@@ -261,7 +261,7 @@ int saveInteger(char * filename, int * arrInteger, int numInteger)
 {
   FILE *inFile;
   int i;
-  inFile = fopen(filename,"w");
+   inFile = fopen(filename,"w");
   for(i = 0; i< numInteger;i++)
     {
       if(fprintf(inFile,"%d\n",arrInteger[i]) == 0)
@@ -295,12 +295,19 @@ int saveString(char * filename, char * * arrString, int numString)
 {
   FILE *inFile;
   int i;
+  int len;
   inFile = fopen(filename,"w");
   for(i = 0; i< numString;i++)
     {
       if(fprintf(inFile,"%s",arrString[i]) == 0)
 	{
 	  return 0;
+	}
+      len = strlen(arrString[i]);    
+      if(arrString[i][len] != '\n')
+	{
+	  
+	  fprintf(inFile,"\n");
 	}
     }
   fclose(inFile);
@@ -353,48 +360,11 @@ void sortString(char * * arrString, int numString)
 
 int compareString(const void *p1, const void *p2)
 {
-  char **a = (char * *)p1;
-  char **b = (char * *)p2;
+  char * *a = (char * *)p1;
+  char * *b = (char * *)p2;
   int i = 0;
-  char *s1 = NULL;
-  char *s2 = NULL;
-  int length_1 = strlen(*a);
-  int length_2 = strlen(*b);
-
-  s1 = malloc(length_1 + 1);
-  s2 = malloc(length_2 + 1);
-  strcpy(s1,*a);
-  strcpy(s2,*b);
-
-  for(i = 0; i < length_1 && i < length_2 ; i++)
-    {
-      if(s1[i] < s2[i])
-	{
-	  free(s1);
-	  free(s2);
-	  return -1;
-	}
-      if(s1[i] > s2[i])
-	{
-	  free(s1);
-	  free(s2);
-	  return 1;
-	}
-    }
-  if(length_1 == length_2)
-    {
-      free(s1);
-      free(s2);
-      return -1;
-    }
-  if(length_1 < length_2)
-    {
-      free(s1);
-      free(s2);
-      return -1;
-    }
-  free(s1);
-  free(s2);
-  return 1;
+  char *s1 = *a;
+  char *s2 = *b;
+  return strcmp(s1,s2);
 }
 

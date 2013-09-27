@@ -1,68 +1,68 @@
-==19020== Memcheck, a memory error detector
-==19020== Copyright (C) 2002-2012, and GNU GPL'd, by Julian Seward et al.
-==19020== Using Valgrind-3.8.1 and LibVEX; rerun with -h for copyright info
-==19020== Command: ./pa05 i ./inputs/07-intinput outputs/07-intinput.out
-==19020== Parent PID: 19007
-==19020== 
---19020-- 
---19020-- Valgrind options:
---19020--    --tool=memcheck
---19020--    --leak-check=full
---19020--    --verbose
---19020--    --log-file=outputs/valgrind-log07
---19020-- Contents of /proc/version:
---19020--   Linux version 2.6.32-358.18.1.el6.x86_64 (mockbuild@x86-003.build.bos.redhat.com) (gcc version 4.4.7 20120313 (Red Hat 4.4.7-3) (GCC) ) #1 SMP Fri Aug 2 17:04:38 EDT 2013
---19020-- Arch and hwcaps: AMD64, amd64-sse3-cx16
---19020-- Page sizes: currently 4096, max supported 4096
---19020-- Valgrind library directory: /usr/lib64/valgrind
---19020-- Reading syms from /home/shay/a/dawood0/Personal/ECE264/solutions/ECE264/PA05/pa05
---19020-- Reading syms from /usr/lib64/valgrind/memcheck-amd64-linux
---19020--    object doesn't have a dynamic symbol table
---19020-- Reading syms from /lib64/ld-2.12.so
---19020-- Scheduler: using generic scheduler lock implementation.
---19020-- Reading suppressions file: /usr/lib64/valgrind/default.supp
-==19020== embedded gdbserver: reading from /tmp/vgdb-pipe-from-vgdb-to-19020-by-dawood0-on-ecelinux23.ecn.purdue.edu
-==19020== embedded gdbserver: writing to   /tmp/vgdb-pipe-to-vgdb-from-19020-by-dawood0-on-ecelinux23.ecn.purdue.edu
-==19020== embedded gdbserver: shared mem   /tmp/vgdb-pipe-shared-mem-vgdb-19020-by-dawood0-on-ecelinux23.ecn.purdue.edu
-==19020== 
-==19020== TO CONTROL THIS PROCESS USING vgdb (which you probably
-==19020== don't want to do, unless you know exactly what you're doing,
-==19020== or are doing some strange experiment):
-==19020==   /usr/lib64/valgrind/../../bin/vgdb --pid=19020 ...command...
-==19020== 
-==19020== TO DEBUG THIS PROCESS USING GDB: start GDB like this
-==19020==   /path/to/gdb ./pa05
-==19020== and then give GDB the following command
-==19020==   target remote | /usr/lib64/valgrind/../../bin/vgdb --pid=19020
-==19020== --pid is optional if only one valgrind process is running
-==19020== 
---19020-- REDIR: 0x3b8aa17520 (strlen) redirected to 0x38049551 (vgPlain_amd64_linux_REDIR_FOR_strlen)
---19020-- Reading syms from /usr/lib64/valgrind/vgpreload_core-amd64-linux.so
---19020-- Reading syms from /usr/lib64/valgrind/vgpreload_memcheck-amd64-linux.so
---19020-- REDIR: 0x3b8aa17390 (index) redirected to 0x4a07bf0 (index)
---19020-- REDIR: 0x3b8aa17410 (strcmp) redirected to 0x4a08530 (strcmp)
---19020-- Reading syms from /lib64/libc-2.12.so
---19020-- REDIR: 0x3b8ae84ec0 (strcasecmp) redirected to 0x480155c (_vgnU_ifunc_wrapper)
---19020-- REDIR: 0x3b8ae87180 (strncasecmp) redirected to 0x480155c (_vgnU_ifunc_wrapper)
---19020-- REDIR: 0x3b8ae82e30 (__GI_strrchr) redirected to 0x4a07a70 (__GI_strrchr)
---19020-- REDIR: 0x3b8ae7f8d0 (strcmp) redirected to 0x480155c (_vgnU_ifunc_wrapper)
---19020-- REDIR: 0x3b8af27ac0 (__strcmp_sse42) redirected to 0x4a08490 (strcmp)
---19020-- REDIR: 0x3b8ae7a8e0 (malloc) redirected to 0x4a0696c (malloc)
---19020-- REDIR: 0x3b8ae7b710 (free) redirected to 0x4a06369 (free)
---19020-- REDIR: 0x3b8ae8ace0 (strchrnul) redirected to 0x4a09f10 (strchrnul)
---19020-- REDIR: 0x3b8ae81350 (__GI_strlen) redirected to 0x4a07f70 (__GI_strlen)
---19020-- REDIR: 0x3b8ae846f0 (mempcpy) redirected to 0x4a09f80 (mempcpy)
---19020-- REDIR: 0x3b8ae89860 (memcpy) redirected to 0x4a08b20 (memcpy)
-==19020== 
-==19020== HEAP SUMMARY:
-==19020==     in use at exit: 0 bytes in 0 blocks
-==19020==   total heap usage: 3 allocs, 3 frees, 1,212 bytes allocated
-==19020== 
-==19020== All heap blocks were freed -- no leaks are possible
-==19020== 
-==19020== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 6 from 6)
---19020-- 
---19020-- used_suppression:      4 U1004-ARM-_dl_relocate_object
---19020-- used_suppression:      2 glibc-2.5.x-on-SUSE-10.2-(PPC)-2a
-==19020== 
-==19020== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 6 from 6)
+==22658== Memcheck, a memory error detector
+==22658== Copyright (C) 2002-2012, and GNU GPL'd, by Julian Seward et al.
+==22658== Using Valgrind-3.8.1 and LibVEX; rerun with -h for copyright info
+==22658== Command: ./pa05 i ./inputs/07-intinput outputs/07-intinput.out
+==22658== Parent PID: 22640
+==22658== 
+--22658-- 
+--22658-- Valgrind options:
+--22658--    --tool=memcheck
+--22658--    --leak-check=full
+--22658--    --verbose
+--22658--    --log-file=outputs/valgrind-log07
+--22658-- Contents of /proc/version:
+--22658--   Linux version 2.6.32-358.18.1.el6.x86_64 (mockbuild@x86-003.build.bos.redhat.com) (gcc version 4.4.7 20120313 (Red Hat 4.4.7-3) (GCC) ) #1 SMP Fri Aug 2 17:04:38 EDT 2013
+--22658-- Arch and hwcaps: AMD64, amd64-sse3-cx16
+--22658-- Page sizes: currently 4096, max supported 4096
+--22658-- Valgrind library directory: /usr/lib64/valgrind
+--22658-- Reading syms from /home/shay/a/dawood0/Personal/ECE264/solutions/ECE264/PA05/pa05
+--22658-- Reading syms from /usr/lib64/valgrind/memcheck-amd64-linux
+--22658--    object doesn't have a dynamic symbol table
+--22658-- Reading syms from /lib64/ld-2.12.so
+--22658-- Scheduler: using generic scheduler lock implementation.
+--22658-- Reading suppressions file: /usr/lib64/valgrind/default.supp
+==22658== embedded gdbserver: reading from /tmp/vgdb-pipe-from-vgdb-to-22658-by-dawood0-on-ecelinux23.ecn.purdue.edu
+==22658== embedded gdbserver: writing to   /tmp/vgdb-pipe-to-vgdb-from-22658-by-dawood0-on-ecelinux23.ecn.purdue.edu
+==22658== embedded gdbserver: shared mem   /tmp/vgdb-pipe-shared-mem-vgdb-22658-by-dawood0-on-ecelinux23.ecn.purdue.edu
+==22658== 
+==22658== TO CONTROL THIS PROCESS USING vgdb (which you probably
+==22658== don't want to do, unless you know exactly what you're doing,
+==22658== or are doing some strange experiment):
+==22658==   /usr/lib64/valgrind/../../bin/vgdb --pid=22658 ...command...
+==22658== 
+==22658== TO DEBUG THIS PROCESS USING GDB: start GDB like this
+==22658==   /path/to/gdb ./pa05
+==22658== and then give GDB the following command
+==22658==   target remote | /usr/lib64/valgrind/../../bin/vgdb --pid=22658
+==22658== --pid is optional if only one valgrind process is running
+==22658== 
+--22658-- REDIR: 0x3b8aa17520 (strlen) redirected to 0x38049551 (vgPlain_amd64_linux_REDIR_FOR_strlen)
+--22658-- Reading syms from /usr/lib64/valgrind/vgpreload_core-amd64-linux.so
+--22658-- Reading syms from /usr/lib64/valgrind/vgpreload_memcheck-amd64-linux.so
+--22658-- REDIR: 0x3b8aa17390 (index) redirected to 0x4a07bf0 (index)
+--22658-- REDIR: 0x3b8aa17410 (strcmp) redirected to 0x4a08530 (strcmp)
+--22658-- Reading syms from /lib64/libc-2.12.so
+--22658-- REDIR: 0x3b8ae84ec0 (strcasecmp) redirected to 0x480155c (_vgnU_ifunc_wrapper)
+--22658-- REDIR: 0x3b8ae87180 (strncasecmp) redirected to 0x480155c (_vgnU_ifunc_wrapper)
+--22658-- REDIR: 0x3b8ae82e30 (__GI_strrchr) redirected to 0x4a07a70 (__GI_strrchr)
+--22658-- REDIR: 0x3b8ae7f8d0 (strcmp) redirected to 0x480155c (_vgnU_ifunc_wrapper)
+--22658-- REDIR: 0x3b8af27ac0 (__strcmp_sse42) redirected to 0x4a08490 (strcmp)
+--22658-- REDIR: 0x3b8ae7a8e0 (malloc) redirected to 0x4a0696c (malloc)
+--22658-- REDIR: 0x3b8ae7b710 (free) redirected to 0x4a06369 (free)
+--22658-- REDIR: 0x3b8ae8ace0 (strchrnul) redirected to 0x4a09f10 (strchrnul)
+--22658-- REDIR: 0x3b8ae81350 (__GI_strlen) redirected to 0x4a07f70 (__GI_strlen)
+--22658-- REDIR: 0x3b8ae846f0 (mempcpy) redirected to 0x4a09f80 (mempcpy)
+--22658-- REDIR: 0x3b8ae89860 (memcpy) redirected to 0x4a08b20 (memcpy)
+==22658== 
+==22658== HEAP SUMMARY:
+==22658==     in use at exit: 0 bytes in 0 blocks
+==22658==   total heap usage: 3 allocs, 3 frees, 1,212 bytes allocated
+==22658== 
+==22658== All heap blocks were freed -- no leaks are possible
+==22658== 
+==22658== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 6 from 6)
+--22658-- 
+--22658-- used_suppression:      4 U1004-ARM-_dl_relocate_object
+--22658-- used_suppression:      2 glibc-2.5.x-on-SUSE-10.2-(PPC)-2a
+==22658== 
+==22658== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 6 from 6)
