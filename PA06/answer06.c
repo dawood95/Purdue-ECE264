@@ -163,9 +163,54 @@
  */
 struct Image * loadImage(const char* filename)
 {
-    return NULL;
-}
+  FILE *file;
+  uint32_t head[4];
+  char *comment;
+  uint8_t *data;
+  struct Image *image;
+  file = fopen(filename,"r");
+  if(file == NULL)
+    {
+      return NULL;
+    }
+  if(fread(head,sizeof(uint32_t),4,file) != 4 || head[0] != ECE264_IMAGE_MAGIC_BITS || head[1] <= 0 || head [2] <= 0)
+    {
+      return NULL;
+    }
+  comment = malloc(sizeof(char) * head[3]);
+  if(head[3] > 0 && comment != NULL)
+    {
+      if(fread(comment,sizeof(char),head[3],file) != head[3])
+	{
+	  free(comment);
+	  return NULL;
+	}
+    }
 
+  data = malloc(sizeof(uint8_t) * head[1] * head[2]);
+  if(fread(data,sizeof(uint8_t),head[1]*head[2],file) != (head[1] * head[2]))
+    {
+      free(comment);
+      free(data);
+      return NULL;
+    }
+  if(fread(data,sizeof(uint8_t),1,file) != 0)
+    {
+      free(comment);
+      free(data);
+      return NULL;
+    }
+  image = malloc(sizeof(struct Image));
+  image -> height = head[2];
+  image -> width = head[1];
+  image -> comment = comment;
+  image -> data = data;
+
+  fclose(file);
+  free(comment);
+  free(data);
+  return image;
+}
 
 /*
  * ===================================================================
@@ -179,7 +224,7 @@ struct Image * loadImage(const char* filename)
  */
 void freeImage(struct Image * image)
 {
-
+  free(image);
 }
 
 /*
@@ -208,7 +253,24 @@ void freeImage(struct Image * image)
  */
 void linearNormalization(struct Image * image)
 {
-
+  uint8_t min = image->data[0];
+  uint8_t max = image->data[0];
+  int i = 0;
+  for(i = 0; i<(image -> width * image -> height); i++)
+    {
+      if(image->data[i] > max)
+  	{
+  	  max = image->data[i];
+  	}
+      if(image->data[i] < min)
+  	{
+  	  min = image->data[i];
+  	}
+    }
+  for(i = 0; i<=(image -> width * image -> height); i++)
+    {
+      image->data[i] = ((image->data[i] - min) * 255) / (max - min);
+    }
 }
 
 

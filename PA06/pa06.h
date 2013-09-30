@@ -35,3 +35,4 @@ void linearNormalization(struct Image * image);
 
 #endif /* pa06.h */
 
+
