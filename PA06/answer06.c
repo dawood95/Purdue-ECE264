@@ -203,7 +203,7 @@ struct Image * loadImage(const char* filename)
   image = malloc(sizeof(struct Image));
   image -> height = head[2];
   image -> width = head[1];
-  image -> comment = comment;
+  strcpy(image -> comment,comment);
   image -> data = data;
 
   fclose(file);
