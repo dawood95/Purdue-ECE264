@@ -164,52 +164,73 @@
 struct Image * loadImage(const char* filename)
 {
   FILE *file;
-  uint32_t head[4];
   char *comment;
   uint8_t *data;
-  struct Image *image;
   file = fopen(filename,"r");
+  struct ImageHeader *header;
+  struct Image *image;
   if(file == NULL)
     {
       return NULL;
     }
-  if(fread(head,sizeof(uint32_t),4,file) != 4 || head[0] != ECE264_IMAGE_MAGIC_BITS || head[1] <= 0 || head [2] <= 0)
+  header = malloc(sizeof(struct ImageHeader));
+  if(header == NULL)
     {
+      fclose(file);
       return NULL;
     }
-  comment = malloc(sizeof(char) * head[3]);
-  if(head[3] > 0 && comment != NULL)
+  if(fread(header,sizeof(struct ImageHeader),1,file) != 1 || header->magic_bits != ECE264_IMAGE_MAGIC_BITS || header->width <=0 || header->height <=0 || header->comment_len < 0) 
     {
-      if(fread(comment,sizeof(char),head[3],file) != head[3])
-	{
-	  free(comment);
-	  return NULL;
-	}
+      fclose(file);
+      free(header);
+      return NULL;
     }
-
-  data = malloc(sizeof(uint8_t) * head[1] * head[2]);
-  if(fread(data,sizeof(uint8_t),head[1]*head[2],file) != (head[1] * head[2]))
+  comment = malloc(sizeof(char) * header->comment_len);
+  if(header->comment_len >0 && comment == NULL)
     {
+      fclose(file);
+      free(header);
+      return NULL;
+    }
+  if(fread(comment,sizeof(char),header->comment_len,file) != header->comment_len || comment[(sizeof(char)*header->comment_len) - 1] != '\0')
+    {
+      fclose(file);
+      free(header);
+      free(comment);
+      return NULL;
+    }
+  data = malloc(sizeof(uint8_t)*header->width*header->height);
+  if(data == NULL)
+    {
+      fclose(file);
+      free(header);
+      free(comment);
+      return NULL;
+    }
+  if(fread(data,sizeof(uint8_t),header->width*header->height,file) != header->height*header->width)
+    {
+      fclose(file);
+      free(header);
       free(comment);
       free(data);
       return NULL;
     }
   if(fread(data,sizeof(uint8_t),1,file) != 0)
     {
-      free(comment);
+      fclose(file);
+      free(header);
       free(data);
+      free(comment);
       return NULL;
     }
   image = malloc(sizeof(struct Image));
-  image -> height = head[2];
-  image -> width = head[1];
-  strcpy(image -> comment,comment);
-  image -> data = data;
-
+  image->height = header->height;
+  image->width = header->width;
+  image->comment = comment;
+  image->data = data;
   fclose(file);
-  free(comment);
-  free(data);
-  return image;
+  free(header);
+  return image;	    
 }
 
 /*
@@ -224,6 +245,13 @@ struct Image * loadImage(const char* filename)
  */
 void freeImage(struct Image * image)
 {
+  if(image != NULL)
+    {
+      if(image->comment != NULL)
+	free(image->comment);
+      if(image->data != NULL)
+	free(image->data);
+    }
   free(image);
 }
 
@@ -267,9 +295,9 @@ void linearNormalization(struct Image * image)
   	  min = image->data[i];
   	}
     }
-  for(i = 0; i<=(image -> width * image -> height); i++)
+  for(i = 0; i<(image -> width * image -> height); i++)
     {
-      image->data[i] = ((image->data[i] - min) * 255) / (max - min);
+      image->data[i] = ((image->data[i] - min) * 255.0) / (max - min);
     }
 }
 

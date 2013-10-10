@@ -1,0 +1,15 @@
+==2819== Memcheck, a memory error detector
+==2819== Copyright (C) 2002-2012, and GNU GPL'd, by Julian Seward et al.
+==2819== Using Valgrind-3.8.1 and LibVEX; rerun with -h for copyright info
+==2819== Command: ./pa06 /home/shay/a/dawood0/Personal/ECE264/solutions/ECE264/PA06/images/02-unnormalized-cat-chess.ee264 output/02-output.ppm
+==2819== Parent PID: 2799
+==2819== 
+==2819== 
+==2819== HEAP SUMMARY:
+==2819==     in use at exit: 0 bytes in 0 blocks
+==2819==   total heap usage: 7 allocs, 7 frees, 271,177 bytes allocated
+==2819== 
+==2819== All heap blocks were freed -- no leaks are possible
+==2819== 
+==2819== For counts of detected and suppressed errors, rerun with: -v
+==2819== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 6 from 6)
