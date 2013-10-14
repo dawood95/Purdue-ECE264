@@ -35,7 +35,14 @@ void List_print(FILE * out, Node * head)
  */
 void List_destroy(Node * head)
 {
+  Node *tmp = NULL;
 
+  while(head != NULL)
+    {
+      tmp = head;
+      head = head->next;
+      free(tmp);
+    }
 }
 
 /**
@@ -53,8 +60,11 @@ void List_destroy(Node * head)
  */
 Node * List_create(int value, int index)
 {
-
-    return NULL;
+  Node *node = malloc(sizeof(Node));
+  node->value = value;
+  node->index = index;
+  node->next = NULL;
+  return node;
 }
 
 /**
@@ -85,7 +95,18 @@ Node * List_create(int value, int index)
  */
 Node * List_build(int * value, int * index, int length)
 {
-    return NULL;
+  int index = 0;
+  while(value[i] == 0)
+    {
+      i++;
+    }
+  Node *head = List_create(value[i],index[i]);
+  i++;
+  while(i < length)
+    {
+      head = List_insert_ascend(head,value[i],index[i]);
+    }
+  return head;
 }
 
 
@@ -110,7 +131,36 @@ Node * List_build(int * value, int * index, int length)
  */
 Node * List_insert_ascend(Node * head, int value, int index)
 {
-    return NULL;
+  Node *node = head;
+  Node *prev = NULL;
+  Node *tmp;
+
+  while(node != NULL && node->index < index)
+    {
+      prev = node;
+      node = node->next;
+    }
+						
+  if(index == node->index)
+    {
+      node->value = node->value + value;
+    }
+  else
+    {
+      tmp = List_create(value,index);
+      if(prev != NULL)
+	{
+	  prev->next = tmp;
+	  tmp->next = node;
+	}
+      else
+	{
+	  tmp->next = node;
+	  head = tmp;
+	}
+    }
+
+  return head;
 }
 
 
@@ -126,7 +176,29 @@ Node * List_insert_ascend(Node * head, int value, int index)
  */
 Node * List_delete(Node * head, int index)
 {
-    return NULL;
+  Node *node = head;
+  Node *prev = NULL;
+  Node *tmp;
+
+  while(node != NULL && node->index != index)
+    {
+      prev = node;
+      node = node->next;
+    }
+  if(node->index == index)
+    {
+      if(prev == NULL)
+	{
+	  head = head->next;
+	  free(node);
+	}
+      else
+	{
+	  prev->next = node->next;
+	  free(node);
+	}
+    }  
+  return head;
 }
 
 /**
@@ -148,7 +220,11 @@ Node * List_delete(Node * head, int index)
  */
 Node * List_copy(Node * head)
 {
-    return NULL;
+  Node *head_cpy = List_create(head->value,head->index);
+  Node *tmp = head_cpy;
+  while(tmp != NULL)
+    {
+  return head_cpy;
 }
 
 
