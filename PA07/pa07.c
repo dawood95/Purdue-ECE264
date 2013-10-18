@@ -81,7 +81,7 @@ int main(int argc, char ** argv)
 {
     if (argc != 3) 
 	{
-	    printf("Usage: ./pa05 <input file 1> <input file 2>\n");
+	    printf("Usage: ./pa07 <input file 1> <input file 2>\n");
 	    return EXIT_FAILURE;
 	}
 

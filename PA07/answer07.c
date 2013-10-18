@@ -95,8 +95,10 @@ Node * List_create(int value, int index)
  */
 Node * List_build(int * value, int * index, int length)
 {
-  int index = 0;
-  while(value[i] == 0)
+  if(length == 0)
+    return NULL;
+  int i= 0;
+  while(value[i] == 0 && i < length)
     {
       i++;
     }
@@ -105,6 +107,7 @@ Node * List_build(int * value, int * index, int length)
   while(i < length)
     {
       head = List_insert_ascend(head,value[i],index[i]);
+      i++;
     }
   return head;
 }
@@ -141,25 +144,24 @@ Node * List_insert_ascend(Node * head, int value, int index)
       node = node->next;
     }
 						
-  if(index == node->index)
+  if(node != NULL && node->index == index)
     {
       node->value = node->value + value;
+      if(node->value == 0)
+	head = List_delete(head,index);
+      return head;
+    }
+  tmp = List_create(value,index);
+  if(prev != NULL)
+    {
+      prev->next = tmp;
+      tmp->next = node;
     }
   else
     {
-      tmp = List_create(value,index);
-      if(prev != NULL)
-	{
-	  prev->next = tmp;
-	  tmp->next = node;
-	}
-      else
-	{
-	  tmp->next = node;
-	  head = tmp;
-	}
+      tmp->next = node;
+      head = tmp;
     }
-
   return head;
 }
 
@@ -178,7 +180,6 @@ Node * List_delete(Node * head, int index)
 {
   Node *node = head;
   Node *prev = NULL;
-  Node *tmp;
 
   while(node != NULL && node->index != index)
     {
@@ -220,11 +221,16 @@ Node * List_delete(Node * head, int index)
  */
 Node * List_copy(Node * head)
 {
-  Node *head_cpy = List_create(head->value,head->index);
-  Node *tmp = head_cpy;
-  while(tmp != NULL)
+  if(head == NULL)
+    return NULL;
+  Node *top = List_create(head->value,head->index);
+  head = head->next;
+  while(head != NULL)
     {
-  return head_cpy;
+      List_insert_ascend(top,head->value,head->index);
+      head = head->next;
+    }
+  return top;
 }
 
 
@@ -250,6 +256,13 @@ Node * List_copy(Node * head)
  */
 Node * List_merge(Node * head1, Node * head2)
 {
-    return NULL;
+  Node *merged = List_copy(head1);
+  Node *tmp = head2;
+  while(tmp != NULL)
+    {
+      merged = List_insert_ascend(merged,tmp->value,tmp->index);
+      tmp =tmp->next;
+    }
+  return merged;
 }
 
