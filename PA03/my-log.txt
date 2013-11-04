@@ -1,0 +1,43 @@
+commit 92cb44598d849ebb50d631c5dd1a072424d028ec
+Author: Sheik Dawood <dawood0@ecelinux15.ecn.purdue.edu>
+Date:   Thu Sep 12 17:02:33 2013 -0400
+
+    Finished Everything ! :D
+
+commit b197cad7aedf35d45a1d8965a88a587b1fa85d76
+Author: Sheik Dawood <dawood0@ecelinux13.ecn.purdue.edu>
+Date:   Tue Sep 10 16:37:04 2013 -0400
+
+    Finished Binary Sort. Test in progress. Till 7 done.
+
+commit ad583b771cd2f0e898b9bd5a7475c938e67e5b6c
+Author: Sheik Dawood <dawood0@ecelinux25.ecn.purdue.edu>
+Date:   Mon Sep 9 18:23:57 2013 -0400
+
+    binary sort started - Not working :(
+
+commit a55617cd4253bfa4d8b9c0ce6ffe18c7bd860a4f
+Author: Sheik Dawood <dawood0@ecelinux11.ecn.purdue.edu>
+Date:   Sun Sep 8 20:17:27 2013 -0400
+
+    Sorting function finished.
+
+commit 5608a9d6da4180c82cb1ee5468f9c98d327f485c
+Author: Sheik Dawood <dawood0@ecelinux10.ecn.purdue.edu>
+Date:   Sun Sep 8 18:46:28 2013 -0400
+
+    readIntegers() Done and Working perfectly.
+
+commit d6f18aeedbba6e80f83e860b2f61d1ca8fff49a1
+Author: Sheik Dawood <dawood0@ecelinux10.ecn.purdue.edu>
+Date:   Sun Sep 8 18:21:45 2013 -0400
+
+    Readded PA03
+
+commit 01972e0c5008dc3a7d16b701a8eb933e831d7abc
+Author: Sheik Dawood <dawood0@ecelinux06.ecn.purdue.edu>
+Date:   Tue Sep 3 14:48:22 2013 -0400
+
+    Added PA03. Started Working on PA03 - 09/03
+
+
