@@ -1,0 +1,75 @@
+==15190== Memcheck, a memory error detector
+==15190== Copyright (C) 2002-2012, and GNU GPL'd, by Julian Seward et al.
+==15190== Using Valgrind-3.8.1 and LibVEX; rerun with -h for copyright info
+==15190== Command: ./pa09 inputs/bit_header_inputs/stone_bit outputs/output_bit06
+==15190== Parent PID: 15086
+==15190== 
+--15190-- 
+--15190-- Valgrind options:
+--15190--    --tool=memcheck
+--15190--    --leak-check=full
+--15190--    --verbose
+--15190--    --log-file=outputs/memoutput_bit06
+--15190-- Contents of /proc/version:
+--15190--   Linux version 2.6.32-358.23.2.el6.x86_64 (mockbuild@x86-022.build.eng.bos.redhat.com) (gcc version 4.4.7 20120313 (Red Hat 4.4.7-3) (GCC) ) #1 SMP Sat Sep 14 05:32:37 EDT 2013
+--15190-- Arch and hwcaps: AMD64, amd64-sse3-cx16
+--15190-- Page sizes: currently 4096, max supported 4096
+--15190-- Valgrind library directory: /usr/lib64/valgrind
+--15190-- Reading syms from /home/shay/a/dawood0/Personal/ECE264/solutions/ECE264/PA09/pa09
+--15190-- Reading syms from /usr/lib64/valgrind/memcheck-amd64-linux
+--15190--    object doesn't have a dynamic symbol table
+--15190-- Reading syms from /lib64/ld-2.12.so
+--15190-- Scheduler: using generic scheduler lock implementation.
+--15190-- Reading suppressions file: /usr/lib64/valgrind/default.supp
+==15190== embedded gdbserver: reading from /tmp/vgdb-pipe-from-vgdb-to-15190-by-dawood0-on-ecelinux16.ecn.purdue.edu
+==15190== embedded gdbserver: writing to   /tmp/vgdb-pipe-to-vgdb-from-15190-by-dawood0-on-ecelinux16.ecn.purdue.edu
+==15190== embedded gdbserver: shared mem   /tmp/vgdb-pipe-shared-mem-vgdb-15190-by-dawood0-on-ecelinux16.ecn.purdue.edu
+==15190== 
+==15190== TO CONTROL THIS PROCESS USING vgdb (which you probably
+==15190== don't want to do, unless you know exactly what you're doing,
+==15190== or are doing some strange experiment):
+==15190==   /usr/lib64/valgrind/../../bin/vgdb --pid=15190 ...command...
+==15190== 
+==15190== TO DEBUG THIS PROCESS USING GDB: start GDB like this
+==15190==   /path/to/gdb ./pa09
+==15190== and then give GDB the following command
+==15190==   target remote | /usr/lib64/valgrind/../../bin/vgdb --pid=15190
+==15190== --pid is optional if only one valgrind process is running
+==15190== 
+--15190-- REDIR: 0x36b4a17520 (strlen) redirected to 0x38049551 (vgPlain_amd64_linux_REDIR_FOR_strlen)
+--15190-- Reading syms from /usr/lib64/valgrind/vgpreload_core-amd64-linux.so
+--15190-- Reading syms from /usr/lib64/valgrind/vgpreload_memcheck-amd64-linux.so
+--15190-- REDIR: 0x36b4a17390 (index) redirected to 0x4a07bf0 (index)
+--15190-- REDIR: 0x36b4a17410 (strcmp) redirected to 0x4a08530 (strcmp)
+--15190-- Reading syms from /lib64/libc-2.12.so
+--15190-- REDIR: 0x36b4e84ec0 (strcasecmp) redirected to 0x480155c (_vgnU_ifunc_wrapper)
+--15190-- REDIR: 0x36b4e87180 (strncasecmp) redirected to 0x480155c (_vgnU_ifunc_wrapper)
+--15190-- REDIR: 0x36b4e82e30 (__GI_strrchr) redirected to 0x4a07a70 (__GI_strrchr)
+--15190-- REDIR: 0x36b4e7a8e0 (malloc) redirected to 0x4a0696c (malloc)
+--15190-- REDIR: 0x36b4e8e6b0 (strstr) redirected to 0x480155c (_vgnU_ifunc_wrapper)
+--15190-- REDIR: 0x36b4f29cc0 (__strstr_sse42) redirected to 0x4a0a160 (strstr)
+--15190-- REDIR: 0x36b4e7b710 (free) redirected to 0x4a06369 (free)
+--15190-- REDIR: 0x36b4e8ace0 (strchrnul) redirected to 0x4a09f10 (strchrnul)
+==15190== 
+==15190== HEAP SUMMARY:
+==15190==     in use at exit: 1,136 bytes in 2 blocks
+==15190==   total heap usage: 83 allocs, 81 frees, 2,960 bytes allocated
+==15190== 
+==15190== Searching for pointers to 2 not-freed blocks
+==15190== Checked 1,113,368 bytes
+==15190== 
+==15190== LEAK SUMMARY:
+==15190==    definitely lost: 0 bytes in 0 blocks
+==15190==    indirectly lost: 0 bytes in 0 blocks
+==15190==      possibly lost: 0 bytes in 0 blocks
+==15190==    still reachable: 1,136 bytes in 2 blocks
+==15190==         suppressed: 0 bytes in 0 blocks
+==15190== Reachable blocks (those to which a pointer was found) are not shown.
+==15190== To see them, rerun with: --leak-check=full --show-reachable=yes
+==15190== 
+==15190== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 6 from 6)
+--15190-- 
+--15190-- used_suppression:      4 U1004-ARM-_dl_relocate_object
+--15190-- used_suppression:      2 glibc-2.5.x-on-SUSE-10.2-(PPC)-2a
+==15190== 
+==15190== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 6 from 6)
